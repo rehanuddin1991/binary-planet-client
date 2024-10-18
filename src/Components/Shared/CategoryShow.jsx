@@ -41,7 +41,7 @@ const CategoryShow = ({all_data,setCategoryData,singleCategory}) => {
            <td style={{ wordWrap:"break-word", wordBreak:"break-word"}}  className="border border-white">{singleCategory.categoryName}</td>
           
            <td style={{ wordWrap:"break-word", wordBreak:"break-word"}}  className="border border-white">
-           <Link to={`/category_edit/${singleCategory._id}`} >Edit</Link>  
+           <Link to={`/dashboard/category_edit/${singleCategory._id}`} >Edit</Link>  
              </td>
            <td style={{ wordWrap:"break-word", wordBreak:"break-word"}}  className="border border-white">  
              <button onClick={()=>handleDelete(singleCategory._id)}>Delete</button> </td>

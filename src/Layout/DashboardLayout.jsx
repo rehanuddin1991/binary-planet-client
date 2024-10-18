@@ -16,15 +16,15 @@ const DashBoardLayout = () => {
       <div className="shadow-md bg-slate-100">
         <DashboardHeader />
       </div>
-      <div className="block lg:flex md:flex">
-        <div className="min-w-64 shadow-md bg-slate-100">
+      <div className="block sm:flex lg:flex md:flex">
+        <div className="min-w-64 xs:w-80 shadow-md bg-slate-100">
           <DashboardSidebarContent />
         </div>
-        <div className="w-3/4 min-h-screen p-10">
+        <div className="w-3/4  p-4 py-0">
           <Outlet />
         </div>
       </div>
-      <div>
+      <div >
       <DashboardFooter></DashboardFooter>
       </div>
     </div>

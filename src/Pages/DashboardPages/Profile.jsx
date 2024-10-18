@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 const Profile = () => {
   const navigate=useNavigate();
   const { user } = useContext(AuthContext);
+ // const [userss,setUsers]=useState(userFromContext);
+  //console.log(userFromContext,999)
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     displayName: "",
@@ -29,7 +31,7 @@ const Profile = () => {
       };
 
       // Make API call to update user information
-      console.log(`${backend_uri}/user/${user._id}`,2222)
+      //console.log(`${backend_uri}/user/${user._id}`,2222)
       const response = await fetch(
         `${backend_uri}/user/${user._id}`,
         {
@@ -44,6 +46,10 @@ const Profile = () => {
       if (!response.ok) {
         throw new Error("Failed to update user information");
       }
+      //console.log(`${backend_uri}/user/${user._id}`,45645)
+      //fetch(`${backend_uri}/user/${user._id}`)
+      //.then((res)=>res.json())
+      //.then((data)=>setUsers(data))
       toast.success("profile updated successfully");
       
       navigate("/dashboard/profile")
@@ -67,7 +73,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-lg relative">
+    <div className="p-6 bg-white mt-4  xs:w-[18rem] ssm:w-[21rem] rounded-lg shadow-lg relative">
       <div className="flex flex-col items-center">
         <img
           src={user?.photoURL}
@@ -123,7 +129,7 @@ const Profile = () => {
       {/* Edit Modal */}
       {isEditModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg w-1/3">
+          <div className="bg-white p-6 rounded-lg xs:w-4/5 ssm:w-4/5 sm:w-4/5 w-1/3">
             <h3 className="text-xl mb-4">Edit User</h3>
             <div className="mb-4">
               <label className="block text-sm font-medium">Name:</label>

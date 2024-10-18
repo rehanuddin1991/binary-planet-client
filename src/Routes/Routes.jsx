@@ -13,6 +13,7 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import ErrorPage from "../Pages/MainPages/ErrorPage";
 import CategoryPage from "../Pages/DashboardPages/CategoryPage";
 import { backend_uri } from "../CommonResources";
+import EditCategory from "../Pages/DashboardPages/EditCategory";
 
 const router = createBrowserRouter([
   {
@@ -87,8 +88,8 @@ const router = createBrowserRouter([
         element: <CreateMessage />,
       },
       {
-        path: "category_edit/:id",
-        element: <CreateMessage/>,
+        path: "category_edit/:id",     
+        element: <EditCategory/>,
         loader: ({params}) => fetch(`${backend_uri}/category/${params.id}`),
       },
     ],
