@@ -3,8 +3,11 @@ import { useContext, useState } from "react";
 import { FiEdit } from "react-icons/fi"; // Importing react-icon
 import { AuthContext } from "../../Provider/AuthProvider";
 import { backend_uri } from "../../CommonResources";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
+  const navigate=useNavigate();
   const { user } = useContext(AuthContext);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -41,7 +44,9 @@ const Profile = () => {
       if (!response.ok) {
         throw new Error("Failed to update user information");
       }
-
+      toast.success("profile updated successfully");
+      
+      navigate("/dashboard/profile")
       // Close the modal upon successful update
       setIsEditModalOpen(false);
     } catch (error) {

@@ -11,6 +11,7 @@ import LoginPage from "../Pages/MainPages/LoginPage";
 import RegisterPages from "../Pages/MainPages/RegisterPages";
 import DashboardLayout from "../Layout/DashboardLayout";
 import ErrorPage from "../Pages/MainPages/ErrorPage";
+import CategoryPage from "../Pages/DashboardPages/CategoryPage";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: "messages",
         element: <Messages />,
+      },
+      {
+        path: "Category",
+        element: <CategoryPage />,
       },
       {
         path: "messages/:id",

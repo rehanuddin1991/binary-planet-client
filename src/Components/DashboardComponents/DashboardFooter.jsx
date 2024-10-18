@@ -2,7 +2,7 @@ import React from 'react'
 
 const DashboardFooter = () => {
   return (
-    <footer className="footer bg-[darkcyan]  text-[whitesmoke] items-center p-4">
+    <footer className="footer bg-[darkcyan] text-xl lg:text-2xl xs:text-[0.9rem]  text-[whitesmoke] items-center p-4">
     <aside className="grid-flow-col items-center">
       <svg
         width="36"

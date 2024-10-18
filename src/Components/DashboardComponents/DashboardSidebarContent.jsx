@@ -86,9 +86,15 @@ const modalFnc=()=>
                     </li>
 
 
+                    <NavLink to="/dashboard/category" className='flex items-center p-4  hover:bg-gray-700 hover:text-[orange]  cursor-pointer'>
+                    <FaSignOutAlt size={24}/>
+                    <span className={`ml-4   md:block ${isOpen?  "block": "hidden"} `}>Add Category  </span>
+                    </NavLink>
+
+
                     <NavLink onClick={handleSignout} className='flex items-center p-4  hover:bg-gray-700 hover:text-[orange]  cursor-pointer'>
                     <FaSignOutAlt size={24}/>
-                    <span className={`ml-4   md:block ${isOpen?  "block": "hidden"} `}>Logout {user?.email}  </span>
+                    <span className={`ml-4   md:block ${isOpen?  "block": "hidden"} `}>Logout    </span>
                     </NavLink>
                      
                 </ul>
