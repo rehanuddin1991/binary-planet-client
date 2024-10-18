@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-
+import { AuthContext } from '../../provider/AuthProvider';
+import { MdDashboard, MdSpaceDashboard } from "react-icons/md";
+import { RxDashboard } from "react-icons/rx";
+import { IoMdLogIn } from "react-icons/io";
 const Header = () => {
+  const { user } = useContext(AuthContext);
   return (
     <div className="navbar bg-base-100">
     <div className="navbar-start">
@@ -24,7 +28,7 @@ const Header = () => {
           tabIndex={0}
           className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-4 text-[darkcyan] font-bold w-52 p-2 shadow">
          <li><NavLink to="/">Home </NavLink> </li>
-         <li><NavLink to="/course">Course </NavLink> </li>
+         <li><NavLink to="/products">All Products </NavLink> </li>
         </ul>
       </div>
       <NavLink to="/" className="btn btn-ghost  xs:text-[0.9rem] ssm:text-[0.9rem] lg:text-xl md:text-xl sm:text-xl">Binary Planet</NavLink>
@@ -32,15 +36,29 @@ const Header = () => {
     <div className="navbar-center text-3xl font-bold xs:hidden ssm:hidden sm:hidden  md:flex lg:flex">
       <ul className="menu menu-horizontal px-3 text-[midnightblue]">
          <NavLink to="/">Home </NavLink>   &nbsp; &nbsp; &nbsp; &nbsp; 
-         <NavLink to="/course">Course </NavLink>  
+         <NavLink to="/products">All Products </NavLink>  
         
          
       </ul>
     </div>
     <div className="navbar-end flex gap-4 items-center   ">
-      <NavLink  className=" lg:text-[1rem] xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]  xs:py-1 xs:px-1"  to="/about">About</NavLink> 
-       <NavLink className="lg:text-[1rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]  xs:py-1 xs:px-1 " to="/login">Login</NavLink>  
-    </div>
+      {
+         user?   (
+          <NavLink title="Dashboard" className="lg:text-[1rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]  xs:py-1 xs:px-1 " to="/dashboard">
+             <MdSpaceDashboard className="w-6 h-6" />
+          </NavLink>  
+               
+        
+         ) :
+         (
+          <>
+          <NavLink className="lg:text-[1rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]  xs:py-1 xs:px-1 " to="/login">Login</NavLink>  
+          <NavLink  className=" lg:text-[1rem] xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]  xs:py-1 xs:px-1"  to="/register">Register</NavLink> 
+          </>
+        
+         )
+      }
+   </div>
   </div>
   )
 }

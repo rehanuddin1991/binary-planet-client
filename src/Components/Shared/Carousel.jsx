@@ -4,7 +4,7 @@ import banner2 from '../../assets/banner2.jpg'
 const Carousel = () => {
     return (
         <div className='mt-2 shadow-2xl'>
-            <div className="carousel w-full max-h-[350px]">
+            <div className="carousel w-full max-h-screen">
                 <div id="item1" className="carousel-item w-full">
                     <img
                         src={banner1}

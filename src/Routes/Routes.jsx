@@ -25,10 +25,10 @@ const router = createBrowserRouter([
         path: "*",
         element: <ErrorPage />,
       },
-    //   {
-    //     path: "/public",
-    //     element: <PublicPage />,
-    //   },
+      {
+        path: "/products",
+        element: <div>this is all products pages</div>,
+      },
     //   {
     //     path: "/private",
     //     element: (
