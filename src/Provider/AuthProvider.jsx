@@ -17,7 +17,9 @@ const AuthProvider = ({children}) => {
     email,
     password,
     name,
-    phone
+    phone,
+    address,
+    image
   ) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -40,7 +42,8 @@ const AuthProvider = ({children}) => {
             email: newUser.email,
             displayName: name || "User",
             phone: phone,
-           // photoUrl: photo || "https://i.ibb.co/k6hTYW1/Alien-Dev.jpg",
+            address: address,
+            photoURL: image || "https://i.ibb.co/k6hTYW1/Alien-Dev.jpg",
             //address: address,
             isAdmin: false, // Default role
             isBlocked: false, // Default status

@@ -44,9 +44,12 @@ const Header = () => {
     <div className="navbar-end flex gap-4 items-center   ">
       {
          user?   (
+          <> 
+          <NavLink className="lg:text-[1rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]  xs:py-1 xs:px-1 " to="/register">Register</NavLink>  
           <NavLink title="Dashboard" className="lg:text-[1rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]  xs:py-1 xs:px-1 " to="/dashboard">
              <MdSpaceDashboard className="w-6 h-6" />
           </NavLink>  
+          </>
                
         
          ) :

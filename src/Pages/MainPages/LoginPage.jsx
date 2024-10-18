@@ -1,26 +1,35 @@
 import React, { useContext, useState } from 'react'
  
 import { Link, useNavigate } from 'react-router-dom'
-import { AuthContext } from '../../provider/AuthProvider';
+import { AuthContext } from '../../Provider/AuthProvider';
+
 const LoginPage = () => {
   const [error,setError]=useState(null);
   const { signInWithGoogle, signIn, signInWithFacebook, signInWithGithub, setUser } = useContext(AuthContext)
   const navigate = useNavigate()
-  const handleNormalSignIn = (event) => {
-    event.preventDefault();
+  const handleNormalSignIn =async (e) => {
+    e.preventDefault();  
     //alert(23);
-    const form = new FormData(event.currentTarget);
+    const form = new FormData(e.currentTarget);
 
     const email = form.get("email");
     const password = form.get("password");
 
-    //console.log(email,password)
-    signIn(email, password)
-      .then((res) => {
-        //console.log(res)
-        navigate('/dashboard');
-      })
-      .catch((err) => { setError(err.message) })
+    try {
+      await signIn(email, password); // Try to log in
+      navigate("/dashboard"); // If successful, navigate to dashboard
+    } catch (err) {
+      setError(err.message); // Set error message if login fails
+      console.error(err.message);
+    }
+
+    // //console.log(email,password)
+    // signIn(email, password)
+    //   .then((res) => {
+    //     //console.log(res)
+    //     navigate('/dashboard');
+    //   })
+    //   .catch((err) => { setError(err.message) })
 
 
   }
@@ -97,9 +106,9 @@ const LoginPage = () => {
 
               </div>
             </form>
-            <button onClick={handleGoogleSignIn} className="btn btn-info">Login with Google</button> <br />
+            {/* <button onClick={handleGoogleSignIn} className="btn btn-info">Login with Google</button> <br />
             <button onClick={handleFacebookSignIn} className="btn btn-success">Login with Facebook</button> <br />
-            <button onClick={handleGithubSignIn} className="btn btn-primary">Login with Github</button>
+            <button onClick={handleGithubSignIn} className="btn btn-primary">Login with Github</button> */}
           </div>
         </div>
       </div>
