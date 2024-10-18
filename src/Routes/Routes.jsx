@@ -12,6 +12,7 @@ import RegisterPages from "../Pages/MainPages/RegisterPages";
 import DashboardLayout from "../Layout/DashboardLayout";
 import ErrorPage from "../Pages/MainPages/ErrorPage";
 import CategoryPage from "../Pages/DashboardPages/CategoryPage";
+import { backend_uri } from "../CommonResources";
 
 const router = createBrowserRouter([
   {
@@ -73,8 +74,9 @@ const router = createBrowserRouter([
         element: <Messages />,
       },
       {
-        path: "Category",
+        path: "category", 
         element: <CategoryPage />,
+        loader: () => fetch(`${backend_uri}/category`),
       },
       {
         path: "messages/:id",
@@ -83,6 +85,11 @@ const router = createBrowserRouter([
       {
         path: "createMessage",
         element: <CreateMessage />,
+      },
+      {
+        path: "category_edit/:id",
+        element: <CreateMessage/>,
+        loader: ({params}) => fetch(`${backend_uri}/category/${params.id}`),
       },
     ],
   },

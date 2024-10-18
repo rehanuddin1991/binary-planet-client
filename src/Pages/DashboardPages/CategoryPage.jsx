@@ -1,11 +1,15 @@
 import React, { useContext, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLoaderData, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 
 import { backend_uri } from '../../CommonResources';
 import { AuthContext } from '../../Provider/AuthProvider';
+import CategoryShow from '../../Components/Shared/CategoryShow';
 
 const CategoryPage = () => {
+    const all_category_data=useLoaderData();
+ const [categoryData,setCategoryData]=useState(all_category_data);
+ console.log(categoryData,30000);
   const [error, setError] = useState(null);
   const { createUser } = useContext(AuthContext)
   const navigate = useNavigate();
@@ -44,7 +48,12 @@ const CategoryPage = () => {
         fetch(`${backend_uri}/category`, requestOptions)
             .then(response => response.json())
             .then((data)=>{
-                if(data.insertedId)toast.success('Category Saved Successfully!');
+                if(data.insertedId){
+                    toast.success('Category Saved Successfully!');
+                    setCategoryData(data);
+                    navigate("/dashboard/category")
+
+                }
             })
              
       } catch (error) {
@@ -115,6 +124,33 @@ const CategoryPage = () => {
          
       </form>
     </div>
+
+    <div   className=" mt-6
+                      bg-[darkcyan] text-[aliceblue]">
+          <table className="table " border="1">
+            {/* head */}
+            <thead className='text-[white] text-center'>
+              <tr className='grid grid-cols-3 overflow-auto whitespace-normal 	 '>
+                <th style={{ wordWrap:"break-word", wordBreak:"break-word"}} className="	   border border-white">Name</th>
+                 
+                <th style={{ wordWrap:"break-word", wordBreak:"break-word"}} className=" 	 border border-white"  > Action</th>
+                <th style={{ wordWrap:"break-word", wordBreak:"break-word"}} className=" 	 border border-white"  > Action</th>
+
+
+              </tr>
+            </thead>
+            <tbody className='text-center '>
+
+              {
+                categoryData.map((category) => {
+
+                  return (<CategoryShow key={category._id} all_data={categoryData} setCategoryData={setCategoryData} singleCategory={category}></CategoryShow>)
+                })
+              }
+
+            </tbody>
+          </table>
+        </div>
   
       
       </>

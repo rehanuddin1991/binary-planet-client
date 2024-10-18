@@ -23,8 +23,8 @@ const Category = () => {
       }, []);
 
       return  ( 
-        <div className='  mt-4 grid grid-cols-1 gap-4 justify-center items-center 
-         sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mx-auto'> 
+        <div className='  mt-6 grid grid-cols-1 gap-4 justify-around items-center 
+         sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mx-auto sm:ml-10  '> 
           {
             category.map((item,index)=>{
               return <SingleCategory  key={item._id} props={item}></SingleCategory>
