@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import { AuthContext } from "../provider/AuthProvider";
+ 
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const PrivateRoute = ({ children }) => {
   const navigate = useNavigate();

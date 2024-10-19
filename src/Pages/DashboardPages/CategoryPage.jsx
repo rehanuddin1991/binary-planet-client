@@ -128,9 +128,8 @@ const CategoryPage = () => {
          
          
       </form>
-    </div>
 
-    <div   className=" mt-6
+      <div   className=" mt-6
                       bg-[darkcyan] text-[aliceblue]">
           <table className="table " border="1">
             {/* head */}
@@ -157,6 +156,9 @@ const CategoryPage = () => {
           </table>
         </div>
   
+    </div>
+
+    
       
       </>
   )

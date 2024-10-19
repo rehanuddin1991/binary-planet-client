@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { backend_uri } from '../../CommonResources';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { FaRegEdit } from "react-icons/fa";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const CategoryShow = ({all_data,setCategoryData,singleCategory}) => {
 
@@ -41,10 +43,10 @@ const CategoryShow = ({all_data,setCategoryData,singleCategory}) => {
            <td style={{ wordWrap:"break-word", wordBreak:"break-word"}}  className="border border-white">{singleCategory.categoryName}</td>
           
            <td style={{ wordWrap:"break-word", wordBreak:"break-word"}}  className="border border-white">
-           <Link to={`/dashboard/category_edit/${singleCategory._id}`} >Edit</Link>  
+           <Link to={`/dashboard/category_edit/${singleCategory._id}`} ><FaRegEdit /></Link>  
              </td>
            <td style={{ wordWrap:"break-word", wordBreak:"break-word"}}  className="border border-white">  
-             <button onClick={()=>handleDelete(singleCategory._id)}>Delete</button> </td>
+             <button onClick={()=>handleDelete(singleCategory._id)}><RiDeleteBin6Line/></button> </td>
            
          </tr>
         

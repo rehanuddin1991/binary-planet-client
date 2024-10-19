@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const SingleProduct = ({ props }) => {
     // console.log(item,444444);
-    const { productName, imageURL } = props;
+    const { productName, imageURL,productRating,productPrice,_id } = props;
+    const {user}=useContext(AuthContext);
+    const navUrl=user? `/product_details/${_id}`:"/login";
+    //console.log(navUrl,33)
     return (
         <>
             <div className="card bg-base-100 xs:w-[18rem] xs:-ml-10 w-80 shadow-xl">
@@ -13,9 +18,15 @@ const SingleProduct = ({ props }) => {
                 </figure>
                 <div className="card-body text-center mx-auto">
                     <h2 className="card-title mx-auto text-2xl text-[indigo]"> {productName}</h2>
+                    <h2 className="card-title mx-auto text-2xl text-[indigo]"> {productPrice}</h2>
+                    <h2 className="card-title mx-auto text-2xl text-[indigo]"> {productRating}</h2>
                     
                     <div className="card-actions justify-end ">
-                        <button className="btn h-[2rem] max-h-[2rem] text-[white] bg-[darkcyan]">See All Products</button>
+                        <button className="btn h-[2rem] max-h-[2rem] text-[white] bg-[darkcyan]">
+                             <NavLink to={navUrl} > 
+                        View Details</NavLink> 
+
+                        </button>
                     </div>
                 </div>
             </div>

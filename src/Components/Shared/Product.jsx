@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { backend_uri } from '../../CommonResources';
 import SingleCategorry from './SingleCategorry';
+import SingleProduct from './SingleProduct';
 
 const Product = () => {
     const [categorry,setCategorry]=useState([]);
@@ -27,7 +28,7 @@ const Product = () => {
          sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mx-auto sm:ml-10  '> 
           {
             categorry.map((item,index)=>{
-              return <SingleP  key={item._id} props={item}></SingleCategorry>
+              return <SingleProduct  key={item._id} props={item}></SingleProduct>
                 
             })
           }

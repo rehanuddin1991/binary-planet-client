@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { backend_uri } from '../../CommonResources';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-
+import { FaRegEdit } from "react-icons/fa";
+import { RiDeleteBin6Line } from "react-icons/ri";
 const ProductShow = ({all_data,setproductData,singleproduct}) => {
 
     const navigate=useNavigate();
@@ -34,17 +35,19 @@ const ProductShow = ({all_data,setproductData,singleproduct}) => {
      return (
        
          
-         <tr className='grid grid-cols-3' >
+         <tr className='grid grid-cols-4' >
            
             
            
            <td style={{ wordWrap:"break-word", wordBreak:"break-word"}}  className="border border-white">{singleproduct.productName}</td>
+           <td style={{ wordWrap:"break-word", wordBreak:"break-word"}}  className="border border-white">{singleproduct.productPrice}</td>
           
            <td style={{ wordWrap:"break-word", wordBreak:"break-word"}}  className="border border-white">
-           <Link to={`/dashboard/product_edit/${singleproduct._id}`} >Edit</Link>  
+           <Link to={`/dashboard/product_edit/${singleproduct._id}`} > <FaRegEdit />
+            </Link>  
              </td>
            <td style={{ wordWrap:"break-word", wordBreak:"break-word"}}  className="border border-white">  
-             <button onClick={()=>handleDelete(singleproduct._id)}>Delete</button> </td>
+             <button onClick={()=>handleDelete(singleproduct._id)}> <RiDeleteBin6Line/> </button> </td>
            
          </tr>
         

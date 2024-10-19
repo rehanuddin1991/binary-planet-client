@@ -40,7 +40,7 @@ const DashboardSidebarContent = () => {
 
       {/* Open the modal using document.getElementById('ID').showModal() method */}
 
-      <div className={` xs:hidden ssm:hidden  top-0 left-0 h-[408px]  ${isOpen ? "w-32" : "w-20"}   md:w-40  bg-gray-700 text-white transition-all duration-100 
+      <div className={` xs:hidden ssm:hidden  top-0 left-0  h-[100%]   ${isOpen ? "w-32" : "w-20"}   md:w-[19.25rem] lg:w-[25.75rem]  bg-gray-700 text-white transition-all duration-100 
                 ease-out  `}>
         <div className='flex justify-between items-center p-4'>
           <h2 className={`  md:block ${isOpen ? "block" : "hidden"}`}>My App {user?.name} </h2>
@@ -97,7 +97,7 @@ const DashboardSidebarContent = () => {
         </nav>
       </div>
 
-      <div className="hidden xs:block navbar bg-base-100">
+      <div className="hidden   xs:block navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -116,12 +116,15 @@ const DashboardSidebarContent = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-              <NavLink to="/dashboard"><span><FaHome size={14} />Home</span></NavLink>
-              <NavLink to="/dashboard"><span><FaUserAlt size={14} />Profile</span></NavLink>
-              <NavLink to="/dashboard"><span><FaHome size={14} />Home</span></NavLink>
-              <NavLink to="/dashboard"><span><FaHome size={14} />Home</span></NavLink>
-              <NavLink onClick={handleSignout}><span><FaSignOutAlt size={14} />Logout</span></NavLink>
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 space-y-2 shadow">
+              <NavLink className="text-black" to="/dashboard"><span><FaHome size={14} />Home</span></NavLink>
+              <NavLink className="text-black" to="/dashboard"><span><FaUserAlt size={14} />Profile</span></NavLink>
+               
+
+              <NavLink to="/dashboard/category" className="text-black"  ><span><MdCategory size={14} />Add Category</span></NavLink>
+              <NavLink to="/dashboard/product" className="text-black"  ><span><MdCategory size={14} />Add Product</span></NavLink>
+              <NavLink className="text-black"  to="/dashboard"><span><FaHome size={14} />Home</span></NavLink>
+              <NavLink className="text-black" onClick={handleSignout}><span><FaSignOutAlt size={14} />Logout</span></NavLink>
               
             </ul>
           </div>
