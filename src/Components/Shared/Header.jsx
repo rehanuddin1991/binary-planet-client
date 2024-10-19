@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { AuthContext } from '../../provider/AuthProvider';
 import { MdDashboard, MdSpaceDashboard } from "react-icons/md";
+import logo from '../../assets/logo.png'
 import { RxDashboard } from "react-icons/rx";
 import { IoMdLogIn } from "react-icons/io";
 const Header = () => {
@@ -31,12 +32,14 @@ const Header = () => {
          <li><NavLink to="/allproducts">All Products </NavLink> </li>
         </ul>
       </div>
-      <NavLink to="/" className="btn btn-ghost  xs:text-[0.9rem] ssm:text-[0.9rem] lg:text-xl md:text-xl sm:text-xl">Binary Planet</NavLink>
+      {/* className="btn btn-ghost  xs:text-[0.9rem] ssm:text-[0.9rem] lg:text-xl md:text-xl sm:text-xl" */}
+      <NavLink to="/" ><img src={logo}
+       className='w-[16rem] h-20 xs:w-[19rem] xs:h-[4.5rem]' alt="" /> </NavLink>
     </div>
     <div className="navbar-center text-3xl font-bold xs:hidden ssm:hidden sm:hidden  md:flex lg:flex">
       <ul className="menu menu-horizontal px-3 text-[midnightblue]">
-         <NavLink to="/">Home </NavLink>   &nbsp; &nbsp; &nbsp; &nbsp; 
-         <NavLink to="/allproducts">All Products </NavLink>  
+         <NavLink className="lg:text-[1rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]"  to="/">Home </NavLink>   &nbsp; &nbsp; &nbsp; &nbsp; 
+         <NavLink className="lg:text-[1rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]" to="/allproducts">All Products </NavLink>  
         
          
       </ul>
@@ -45,7 +48,7 @@ const Header = () => {
       {
          user?   (
           <> 
-          <NavLink className="lg:text-[1rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]  xs:py-1 xs:px-1 " to="/register">Register</NavLink>  
+          <NavLink className=" lg:text-[1.2rem] xs:text-[0.8rem] md:text-[0.8rem] ssm:text-[0.9rem]  xs:py-1 xs:px-1 " to="/register">Register</NavLink>  
           <NavLink title="Dashboard" className="lg:text-[1rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]  xs:py-1 xs:px-1 " to="/dashboard">
              <MdSpaceDashboard className="w-6 h-6" />
           </NavLink>  

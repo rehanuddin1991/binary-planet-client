@@ -19,6 +19,8 @@ import EditProduct from "../Pages/DashboardPages/EditProduct";
 import AllProducts from "../Pages/MainPages/AllProducts";
 import ProductDetails from "../Pages/MainPages/ProductDetails";
 import CategoryWiseProducts from "../Pages/MainPages/CategoryWiseProducts";
+import ContactPage from "../Pages/MainPages/ContactPage";
+import AboutPage from "../Pages/MainPages/AboutPage";
 
 const router = createBrowserRouter([
   {
@@ -37,17 +39,18 @@ const router = createBrowserRouter([
         path: "/products",
         element: <div>this is all products pages</div>,
       },
-    //   {
-    //     path: "/private",
-    //     element: (
-    //       <PrivateRoute>
-    //         <PrivatePage />
-    //       </PrivateRoute>
-    //     ),
-    //   },
+    
       {
         path: "/login",
         element: <LoginPage />,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
+      },
+      {
+        path: "/about",
+        element: <AboutPage />,
       },
       {
         path: "/register",
