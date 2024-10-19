@@ -28,7 +28,7 @@ const Header = () => {
           tabIndex={0}
           className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-4 text-[darkcyan] font-bold w-52 p-2 shadow">
          <li><NavLink to="/">Home </NavLink> </li>
-         <li><NavLink to="/products">All Products </NavLink> </li>
+         <li><NavLink to="/allproducts">All Products </NavLink> </li>
         </ul>
       </div>
       <NavLink to="/" className="btn btn-ghost  xs:text-[0.9rem] ssm:text-[0.9rem] lg:text-xl md:text-xl sm:text-xl">Binary Planet</NavLink>
@@ -36,7 +36,7 @@ const Header = () => {
     <div className="navbar-center text-3xl font-bold xs:hidden ssm:hidden sm:hidden  md:flex lg:flex">
       <ul className="menu menu-horizontal px-3 text-[midnightblue]">
          <NavLink to="/">Home </NavLink>   &nbsp; &nbsp; &nbsp; &nbsp; 
-         <NavLink to="/products">All Products </NavLink>  
+         <NavLink to="/allproducts">All Products </NavLink>  
         
          
       </ul>

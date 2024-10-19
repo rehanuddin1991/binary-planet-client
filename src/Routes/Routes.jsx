@@ -16,6 +16,7 @@ import { backend_uri } from "../CommonResources";
 import EditCategory from "../Pages/DashboardPages/EditCategory";
 import ProductPage from "../Pages/DashboardPages/ProductPage";
 import EditProduct from "../Pages/DashboardPages/EditProduct";
+import AllProducts from "../Pages/MainPages/AllProducts";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,16 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <RegisterPages />,
+      },
+      {
+        path: "allproducts/:id",     
+        element: <AllProducts/>,
+        loader: ({params}) => fetch(`${backend_uri}/product/${params.id}`),
+      },
+      {
+        path: "allproducts/",     
+        element: <AllProducts/>,
+        loader: () => fetch(`${backend_uri}/product/`),
       },
     ],
   },
