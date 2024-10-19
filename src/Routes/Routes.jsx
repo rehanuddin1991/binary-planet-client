@@ -18,6 +18,7 @@ import ProductPage from "../Pages/DashboardPages/ProductPage";
 import EditProduct from "../Pages/DashboardPages/EditProduct";
 import AllProducts from "../Pages/MainPages/AllProducts";
 import ProductDetails from "../Pages/MainPages/ProductDetails";
+import CategoryWiseProducts from "../Pages/MainPages/CategoryWiseProducts";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,15 @@ const router = createBrowserRouter([
         element: <AllProducts/>,
         loader: () => fetch(`${backend_uri}/product/`),
       },
+
+      {
+        path: "categorywiseproduct/:id",       
+        element: <CategoryWiseProducts/>,
+        loader: ({params}) => fetch(`${backend_uri}/categorywiseproduct/${params.id}`),
+        
+      },
+
+
       {
         path: "/product_details/:id",    
         element: (

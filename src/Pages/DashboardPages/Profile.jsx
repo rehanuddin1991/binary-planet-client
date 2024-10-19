@@ -74,7 +74,8 @@ const Profile = () => {
   };
 
   return (
-    <div className="p-6 bg-white mt-4  xs:w-[18rem] ssm:w-[21rem] rounded-lg shadow-lg relative">
+    <div className="p-6 bg-white mt-4 sm:w-[26rem] sm:ml-12 lg:w-[37rem] xl:w-[50rem]
+     md:w-[27rem] xs:w-[18rem] ssm:w-[21rem] rounded-lg shadow-lg relative">
        <Helmet>
     <title>Profile Page</title>
 
