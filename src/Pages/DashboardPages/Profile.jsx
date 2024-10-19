@@ -5,6 +5,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { backend_uri } from "../../CommonResources";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Profile = () => {
   const navigate=useNavigate();
@@ -74,6 +75,10 @@ const Profile = () => {
 
   return (
     <div className="p-6 bg-white mt-4  xs:w-[18rem] ssm:w-[21rem] rounded-lg shadow-lg relative">
+       <Helmet>
+    <title>Profile Page</title>
+
+    </Helmet>
       <div className="flex flex-col items-center">
         <img
           src={user?.photoURL}

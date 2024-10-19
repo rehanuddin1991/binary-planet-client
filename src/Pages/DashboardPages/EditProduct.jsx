@@ -4,24 +4,24 @@ import { backend_uri } from '../../CommonResources';
 import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
 
-const EditCategory = () => {
+const EditProduct = () => {
     const [error, setError] = useState(null);
     const loaderData = useLoaderData();
     //console.log(loaderData,3344)
     const navigate = useNavigate();
-    const [courses, setCourses] = useState([]);
-    const handleCategoryUpdate = async (e) => {
+     
+    const handleproductUpdate = async (e) => {
         e.preventDefault();
         setError(null);
         const form = new FormData(e.currentTarget);
-        const category_name = form.get("category_name");
+        const product_name = form.get("product_name");
         const image = form.get("image");
 
         if( document.getElementById("image").files.length == 0 ){
             //console.log("no files selected");
              
                 const inputObj = {
-                    categoryName: category_name,
+                    productName: product_name,
                     imageURL:loaderData.imageURL,
                 }
 
@@ -31,13 +31,13 @@ const EditCategory = () => {
                     body: JSON.stringify(inputObj)
                 };
 
-                fetch(`${backend_uri}/category/${loaderData._id}`, inputData)
+                fetch(`${backend_uri}/product/${loaderData._id}`, inputData)
                             .then(response => response.json())
                             .then((data) => {
                                 console.log(data);
                                 if (data.modifiedCount) {
                                     toast.success('Successfully Updated to mongodb!');
-                                    navigate("/dashboard/category/")}
+                                    navigate("/dashboard/product/")}
                                 })
 
                  
@@ -56,10 +56,11 @@ const EditCategory = () => {
                     const image_url = data.data.display_url;
                     try {
                         const inputObj = {
-                            categoryName: category_name,
+                            productName: product_name,
                             imageURL: image_url,
 
                         }
+                        console.log('first',inputObj)
 
                         const inputData = {
                             method: 'PUT',
@@ -67,13 +68,13 @@ const EditCategory = () => {
                             body: JSON.stringify(inputObj)
                         };
 
-                        fetch(`${backend_uri}/category/${loaderData._id}`, inputData)
+                        fetch(`${backend_uri}/product/${loaderData._id}`, inputData)
                             .then(response => response.json())
                             .then((data) => {
                                 console.log(data);
                                 if (data.modifiedCount) {
                                     toast.success('Successfully Updated to mongodb!');
-                                    navigate("/dashboard/category/")
+                                    navigate("/dashboard/product/")
                                     //  fetch("http://localhost:5000/courses")
                                     //  .then((res)=>res.json())
                                     //  .then(data=>setCourses(data))
@@ -110,17 +111,17 @@ const EditCategory = () => {
         <div className=" mt-10 mx-auto         card bg-base-100  xs:max-w-[22rem] ssm:max-w-[20rem]
     sm:max-w-[28rem] lg:max-w-[34rem] md:max-w-[29rem] shadow-2xl">
          <Helmet>
-    <title>Edit Category</title>
+    <title>Edit Product</title>
 
     </Helmet>
 
-            <form className="card-body" onSubmit={handleCategoryUpdate}>
-                <legend className='text-[indigo] text-xl'>Update Category</legend>
+            <form className="card-body" onSubmit={handleproductUpdate}>
+                <legend className='text-[indigo] text-xl'>Update Product</legend>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Category Name</span>
+                        <span className="label-text">Product Name</span>
                     </label>
-                    <input type="text" defaultValue={loaderData?.categoryName} name="category_name" placeholder="Input Your Category Name" className="input input-bordered input-info w-full max-w-xs" required />
+                    <input type="text" defaultValue={loaderData?.productName} name="product_name" placeholder="Input Your product Name" className="input input-bordered input-info w-full max-w-xs" required />
                 </div>
 
 
@@ -161,4 +162,4 @@ const EditCategory = () => {
     )
 }
 
-export default EditCategory
+export default EditProduct

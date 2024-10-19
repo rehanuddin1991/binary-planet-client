@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { AuthContext } from '../../provider/AuthProvider';
 import { backend_uri } from '../../CommonResources';
+import { Helmet } from 'react-helmet-async';
 
 const RegisterPage = () => {
   const [error, setError] = useState(null);
@@ -60,6 +61,10 @@ const RegisterPage = () => {
     }
   return (
 <>
+<Helmet>
+    <title>Register Here</title>
+
+    </Helmet>
     <div className=" mt-10 mx-auto         card bg-base-100  xs:max-w-[22rem] ssm:max-w-[20rem]
       sm:max-w-[28rem] lg:max-w-[34rem] md:max-w-[29rem] shadow-2xl">
        

@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
  
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../Provider/AuthProvider';
+import { Helmet } from 'react-helmet-async';
 
 const LoginPage = () => {
   const [error,setError]=useState(null);
@@ -75,7 +76,12 @@ const LoginPage = () => {
   }
 
   return (
+    
     <div>
+      <Helmet>
+    <title>Login Page</title>
+
+    </Helmet>
       <div className="hero bg-base-200  ">
         <div className="hero-content flex-col lg:flex-row-reverse">
 
