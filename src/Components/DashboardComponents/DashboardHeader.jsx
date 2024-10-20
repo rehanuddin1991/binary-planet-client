@@ -18,14 +18,14 @@ const DashboardHeader = () => {
  
   return (
     <div className='flex justify-between items-center bg-[white] p-2 shadow-sm '>
-      <h1 className='xs:text-[0.8rem] ssm:text-[0.8rem] text-xl p-2 text-[indigo]'>Binary Planet Ltd. </h1>
-      <h1 className='xs:text-[0.8rem] ssm:text-[0.8rem]  text-xl p-2 text-[darkcyan] '>User: {user?.displayName}  
+      <h1 className='xs:text-[0.7rem] xs:ml-5 ssm:ml-5 ssm:text-[0.7rem] text-xl p-2 text-[indigo]'>Binary Planet Ltd. </h1>
+      <h1 className='xs:text-[0.7rem] ssm:text-[0.7rem]  text-xl p-1 text-[darkcyan] '> {user?.email}  
        
         
          </h1>
          <div className='flex gap-2 '>
-         <NavLink onClick={handleLogout}><FaSignOutAlt size={20}/></NavLink> 
-         <NavLink to="/"><FaHome size={20}/></NavLink> 
+         <NavLink onClick={handleLogout}><FaSignOutAlt size={19}/></NavLink> 
+         <NavLink to="/"><FaHome size={19}/></NavLink> 
 
          </div>
           

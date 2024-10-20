@@ -41,7 +41,7 @@ const DashboardSidebarContent = () => {
 
       {/* Open the modal using document.getElementById('ID').showModal() method */}
 
-      <div className={` xs:hidden ssm:hidden  top-0 left-0  h-[100%]   ${isOpen ? "w-32" : "w-20"}   md:w-[19.25rem] lg:w-[25.75rem]  bg-gray-700 text-white transition-all duration-100 
+      <div className={` xs:hidden  ssm:hidden  top-0 left-0  h-[100%]   ${isOpen ? "w-32" : "w-20"}   md:w-[19.25rem] lg:w-[25.75rem]  bg-gray-700 text-white transition-all duration-100 
                 ease-out  `}>
         <div className='flex justify-between items-center p-4'>
           <h2 className={`  md:block ${isOpen ? "block" : "hidden"}`}>My App {user?.name} </h2>
@@ -52,16 +52,13 @@ const DashboardSidebarContent = () => {
         </div>
         <nav className='mt-4'>
           <ul>
-            <li className='flex items-center p-4 hover:text-[orange]  hover:bg-gray-700 cursor-pointer'>
+            <NavLink to="/dashboard/" className='flex items-center p-4 hover:text-[orange]  hover:bg-gray-700 cursor-pointer'>
               <FaHome size={24} />
               <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>Home  </span>
-            </li>
+            </NavLink  >
 
 
-            <li className='flex items-center p-4 hover:text-[orange]  hover:bg-gray-700 cursor-pointer'>
-              <FaUserAlt size={24} />
-              <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>Profile</span>
-            </li>
+            
 
 
             <NavLink to="/dashboard/profile" className='flex items-center p-4 hover:text-[orange]   hover:bg-gray-700 cursor-pointer'>
@@ -76,10 +73,10 @@ const DashboardSidebarContent = () => {
 
             
 
-            <li className='flex items-center p-4 hover:text-[orange]   hover:bg-gray-700 cursor-pointer'>
+            <NavLink className='flex items-center p-4 hover:text-[orange]   hover:bg-gray-700 cursor-pointer'>
               <FaCog size={24} />
               <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>Settings</span>
-            </li>
+            </NavLink>
 
 
             <NavLink to="/dashboard/category" className='flex items-center p-4  hover:bg-gray-700 hover:text-[orange]  cursor-pointer'>
@@ -93,7 +90,7 @@ const DashboardSidebarContent = () => {
             </NavLink>
 
 
-            <NavLink onClick={handleSignout} className='flex items-center p-4  hover:bg-gray-700 hover:text-[orange]  cursor-pointer'>
+            <NavLink onClick={handleSignout} className='flex text-[white] items-center p-4  hover:bg-gray-700 hover:text-[orange]  cursor-pointer'>
               <FaSignOutAlt size={24} />
               <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>Logout    </span>
             </NavLink>
@@ -103,7 +100,7 @@ const DashboardSidebarContent = () => {
         </nav>
       </div>
 
-      <div className="hidden   xs:block navbar bg-base-100">
+      <div className="hidden ssm:block  xs:block xs:-mt-16 xs:-ml-4  ssm:-mt-16 ssm:-ml-4 navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -122,7 +119,7 @@ const DashboardSidebarContent = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 space-y-2 shadow">
+              className="ml-3 menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-3 space-y-2 shadow">
               <NavLink className="text-black" to="/dashboard"><span><FaHome size={14} />Home</span></NavLink>
               <NavLink className="text-black" to="/dashboard"><span><FaUserAlt size={14} />Profile</span></NavLink>
                

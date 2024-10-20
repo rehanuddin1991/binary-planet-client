@@ -14,6 +14,7 @@ import ErrorPage from "../Pages/MainPages/ErrorPage";
 import CategoryPage from "../Pages/DashboardPages/CategoryPage";
 import { backend_uri } from "../CommonResources";
 import EditCategory from "../Pages/DashboardPages/EditCategory";
+import EditUsers from "../Pages/DashboardPages/EditUsers";
 import ProductPage from "../Pages/DashboardPages/ProductPage";
 import EditProduct from "../Pages/DashboardPages/EditProduct";
 import AllProducts from "../Pages/MainPages/AllProducts";
@@ -137,6 +138,14 @@ const router = createBrowserRouter([
         element: <EditCategory/>,
         loader: ({params}) => fetch(`${backend_uri}/category/${params.id}`),
       },
+
+      {
+        path: "user_edit/:id",     
+        element: <EditUsers/>,
+        loader: ({params}) => fetch(`${backend_uri}/user/${params.id}`),
+      },
+
+
 
       {
         path: "product_edit/:id",     

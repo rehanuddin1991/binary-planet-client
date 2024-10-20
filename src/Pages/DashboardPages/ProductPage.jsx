@@ -31,7 +31,7 @@ const ProductPage = () => {
   }, [])
 
 
-  console.log(options, 3435)
+  //console.log(options, 3435)
 
   const [error, setError] = useState(null);
   const { createUser } = useContext(AuthContext)
@@ -44,7 +44,7 @@ const ProductPage = () => {
     const form = new FormData(e.currentTarget);
     const product_name = form.get("product_name");
     const product_category = form.get("product_category");
-    console.log(product_category,"cat")
+    //console.log(product_category,"cat")
     const product_price = form.get("product_price");
     const product_rating = form.get("product_rating");
     const image = form.get("image");

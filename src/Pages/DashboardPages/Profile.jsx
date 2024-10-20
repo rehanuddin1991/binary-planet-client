@@ -1,15 +1,24 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { FiEdit } from "react-icons/fi"; // Importing react-icon
 import { AuthContext } from "../../Provider/AuthProvider";
 import { backend_uri } from "../../CommonResources";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 const Profile = () => {
   const navigate=useNavigate();
   const { user } = useContext(AuthContext);
+  console.log(user,233)
+  const [users,setUsers]=useState([]);
+  //console.log(344,`${backend_uri}/user/${user.uid}`)
+  useEffect( ()=>{
+    fetch(`${backend_uri}/user/${user.uid}`)
+    .then((res)=>res.json())
+    .then(data=>setUsers(data))
+  
+  },[])
  // const [userss,setUsers]=useState(userFromContext);
   //console.log(userFromContext,999)
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -82,19 +91,19 @@ const Profile = () => {
     </Helmet>
       <div className="flex flex-col items-center">
         <img
-          src={user?.photoURL}
+          src={users?.photoURL}
           alt="Profile"
           className="w-36 h-36 object-cover rounded-full shadow-md"
         />
         <h2 className="mt-4 text-2xl font-bold text-gray-800">
-          {user?.displayName}
+          {users?.displayName}
         </h2>
-        <p className="text-gray-500">{user?.email}</p>
+        <p className="text-gray-500">{users?.email}</p>
         <div>
           <strong
-            className={!user?.isBlocked ? "text-green-500" : "text-red-500"}
+            className={!users?.isBlocked ? "text-green-500" : "text-red-500"}
           >
-            {!user?.isBlocked ? "Active" : "Blocked"}
+            {!users?.isBlocked ? "Active" : "Blocked"}
           </strong>
         </div>
       </div>
@@ -104,31 +113,31 @@ const Profile = () => {
         <hr />
         <ul className="mt-3 text-gray-600 space-y-2">
           <li>
-            <strong>Role:</strong> {user?.isAdmin ? "Admin" : "User"}
+            <strong>Role:</strong> {users?.isAdmin ? "Admin" : "User"}
           </li>
           <li>
-            <strong>Email:</strong> {user?.email}
+            <strong>Email:</strong> {users?.email}
           </li>
           <li>
-            <strong>Phone:</strong> {user?.phone || "N/A"}
+            <strong>Phone:</strong> {users?.phone || "N/A"}
           </li>
           <li>
-            <strong>Address:</strong> {user?.address || "N/A"}
+            <strong>Address:</strong> {users?.address || "N/A"}
           </li>
           <hr />
           <li>
-            <strong>Unique ID:</strong> {user?.uid}
+            <strong>Unique ID:</strong> {users?.uid}
           </li>
         </ul>
       </div>
 
       {/* Edit Button with React Icon */}
-      {!user?.isBlocked ? (
+      {!users?.isBlocked ? (
         <button
           className="absolute top-4 right-4 text-gray-500 hover:text-blue-600 transition-transform transform hover:scale-105"
-          onClick={handleOpenEditModal}
-        >
-          <FiEdit size={24} />
+          // onClick={handleOpenEditModal}
+        > <Link to={`/dashboard/user_edit/${user.uid}`} > <FiEdit size={24} /></Link> 
+         
         </button>
       ) : null}
 
@@ -185,7 +194,7 @@ const Profile = () => {
               onClick={handleUpdate}
               className="bg-blue-500 text-white p-2 rounded mr-2"
             >
-              Update
+               Update
             </button>
             <button
               onClick={() => setIsEditModalOpen(false)}

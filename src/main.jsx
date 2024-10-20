@@ -16,7 +16,7 @@ createRoot(document.getElementById('root')).render(
     <HelmetProvider>
    <AuthProvider>
       <RouterProvider router={router} />
-      <Toaster></Toaster>
+      <Toaster   position="top-right" ></Toaster>
     </AuthProvider>
     </HelmetProvider>
   </StrictMode>,
