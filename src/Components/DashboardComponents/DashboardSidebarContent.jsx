@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { IoCloseSharp } from "react-icons/io5";
-import { FaHome, FaUserAlt, FaCog, FaSignOutAlt, FaBars } from 'react-icons/fa'
-import { AuthContext } from '../../Provider/AuthProvider'
+import { FaHome, FaUserAlt, FaCog, FaSignOutAlt, FaBars, FaUsers } from 'react-icons/fa'
+ 
 import { NavLink, useNavigate } from 'react-router-dom';
 import { MdCategory } from "react-icons/md";
 import { signOut } from 'firebase/auth';
+import { AuthContext } from '../../provider/AuthProvider';
 
 
 const DashboardSidebarContent = () => {
@@ -68,7 +69,12 @@ const DashboardSidebarContent = () => {
               <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>Profile</span>
             </NavLink>
 
+            <NavLink to="/dashboard/allUsers" className='flex items-center p-4 hover:text-[orange]   hover:bg-gray-700 cursor-pointer'>
+              <FaUsers size={24} />
+              <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>All Users</span>
+            </NavLink>
 
+            
 
             <li className='flex items-center p-4 hover:text-[orange]   hover:bg-gray-700 cursor-pointer'>
               <FaCog size={24} />

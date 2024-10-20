@@ -15,6 +15,7 @@ const EditCategory = () => {
         setError(null);
         const form = new FormData(e.currentTarget);
         const category_name = form.get("category_name");
+        const category_description = form.get("category_description");
         const image = form.get("image");
 
         if( document.getElementById("image").files.length == 0 ){
@@ -22,6 +23,7 @@ const EditCategory = () => {
              
                 const inputObj = {
                     categoryName: category_name,
+                    categoryDescription: category_description,
                     imageURL:loaderData.imageURL,
                 }
 
@@ -120,7 +122,16 @@ const EditCategory = () => {
                     <label className="label">
                         <span className="label-text">Category Name</span>
                     </label>
-                    <input type="text" defaultValue={loaderData?.categoryName} name="category_name" placeholder="Input Your Category Name" className="input input-bordered input-info w-full max-w-xs" required />
+                    <input type="text" defaultValue={loaderData?.categoryName} name="category_name"
+                      className="input input-bordered input-info w-full max-w-xs" required />
+                </div>
+
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Category Description</span>
+                    </label>
+                    <input type="text" defaultValue={loaderData?.categoryDescription} name="category_description" 
+                       className="input input-bordered input-info w-full max-w-xs" required />
                 </div>
 
 

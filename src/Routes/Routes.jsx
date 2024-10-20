@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom"; 
 import PrivateRoute from "./PrivateRoutes";
-import AllUsers from "../pages/dashboardPages/AllUsers";
+
 import Profile from "../pages/dashboardPages/Profile";
 import Messages from "../pages/dashboardPages/Messages";
 import CreateMessage from "../pages/dashboardPages/CreateMessages";
@@ -21,6 +21,7 @@ import ProductDetails from "../Pages/MainPages/ProductDetails";
 import CategoryWiseProducts from "../Pages/MainPages/CategoryWiseProducts";
 import ContactPage from "../Pages/MainPages/ContactPage";
 import AboutPage from "../Pages/MainPages/AboutPage";
+import AllUsersPage from "../Pages/DashboardPages/AllUsersPage";
 
 const router = createBrowserRouter([
   {
@@ -98,7 +99,8 @@ const router = createBrowserRouter([
       },
       {
         path: "allUsers",
-        element: <AllUsers />,
+        element: <AllUsersPage />,
+        loader: () => fetch(`${backend_uri}/user/`),
       },
       {
         path: "profile",

@@ -1,8 +1,9 @@
 import React from 'react'
 import { useContext } from 'react'
-import { AuthContext } from '../../Provider/AuthProvider'
+
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FaHome,FaSignOutAlt } from "react-icons/fa";
+import { AuthContext } from '../../provider/AuthProvider';
 
 const DashboardHeader = () => {
   const { user,mySignOut } = useContext(AuthContext);
@@ -23,8 +24,8 @@ const DashboardHeader = () => {
         
          </h1>
          <div className='flex gap-2 '>
-         <NavLink onClick={handleLogout}><FaSignOutAlt/></NavLink> 
-         <NavLink to="/"><FaHome/></NavLink> 
+         <NavLink onClick={handleLogout}><FaSignOutAlt size={20}/></NavLink> 
+         <NavLink to="/"><FaHome size={20}/></NavLink> 
 
          </div>
           

@@ -3,16 +3,17 @@ import { Link, useLoaderData, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 
 import { backend_uri } from '../../CommonResources';
-import { AuthContext } from '../../Provider/AuthProvider';
+ 
 import CategoryShow from '../../Components/Shared/CategoryShow';
 import { Helmet } from 'react-helmet-async';
+import { AuthContext } from '../../provider/AuthProvider';
 
-const CategoryPage = () => {
-    const all_category_data=useLoaderData();
- const [categoryData,setCategoryData]=useState(all_category_data);
- console.log(categoryData,30000);
+const AllUsersPage = () => {
+    const all_Users_data=useLoaderData();
+ const [usersdata,setUserdata]=useState(all_Users_data);
+ console.log(all_Users_data,30000);
   const [error, setError] = useState(null);
-  const { createUser } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   const navigate = useNavigate();
   const handleCategoryAdd = async    (e) => {
 
@@ -81,7 +82,7 @@ const CategoryPage = () => {
   return (
 <>
 <Helmet>
-    <title>Category Page</title>
+    <title>All Users</title>
 
     </Helmet>
     
@@ -91,56 +92,7 @@ const CategoryPage = () => {
 
 
        
-        <form className="card-body" onSubmit={handleCategoryAdd}>
-          <legend className='text-[indigo] text-xl  '>Add Category Data</legend>
-          <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-semibold">Category Name</span>
-                </label>
-                <input type="text" name="category_name" placeholder="Input Your Category Name" className="input input-bordered input-info w-full max-w-xs" required />
-              </div>
-
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-semibold">Category Description</span>
-                </label>
-                <input type="text" name="category_description" placeholder="Category Description" className="input input-bordered input-info w-full max-w-xs" required />
-              </div>
-
-         
-
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-semibold">Image</span>
-                </label>
-                <input type="file" name="image"   className="" required />
-              </div>
-
-
-
-
-             
-
-              <div className="form-control mt-4  ">
-                <input className="mx-auto btn btn-primary w-24 lg:w-40 sm:w-24 md:w-32" type="submit" value="Save" />
-                <br />
-                {
-                  error ? error : ""
-                }
-
-              </div>
-
-               
-
-
-
-
-
-              
-         
-         
-         
-      </form>
+        
 
       <div   className=" mt-6
                       bg-[darkcyan] text-[aliceblue]">
@@ -158,12 +110,12 @@ const CategoryPage = () => {
             </thead>
             <tbody className='text-left '>
 
-              {
-                categoryData.map((category) => {
+              {/* {
+                usersdata.map((category) => {
 
                   return (<CategoryShow key={category._id} all_data={categoryData} setCategoryData={setCategoryData} singleCategory={category}></CategoryShow>)
                 })
-              }
+              } */}
 
             </tbody>
           </table>
@@ -177,4 +129,4 @@ const CategoryPage = () => {
   )
 }
 
-export default CategoryPage
+export default AllUsersPage
