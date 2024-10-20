@@ -67,7 +67,7 @@ const ProductDetails = () => {
 
     return (
         <>
-            <div className=" card bg-base-100 
+            <div className="mt-8 card bg-base-100 
              shadow-xl"><br /> <br />
                 <figure>
                     <img className='rounded-md '
@@ -94,8 +94,8 @@ const ProductDetails = () => {
 
             {/* Open the modal using document.getElementById('ID').showModal() method */}
  
-<dialog id="my_modal_5" className="modal  modal-bottom sm:modal-middle">
-  <div className="modal-box">
+<dialog id="my_modal_5" className="modal  modal-bottom sm:modal-middle ">
+  <div className="modal-box  ">
     
      
     <div className="modal-action flex justify-around items-center">
@@ -107,7 +107,7 @@ const ProductDetails = () => {
     </div>
 
     <div className=" mt-1             card bg-base-100  xs:w-[17rem] xs:ml-2 ssm:w-[20rem] ssm:ml-5 
-      sm:w-[24rem] sm:ml-16   md:w-[24rem] md:ml-35 lg:w-[35rem] lg:ml-35 xl:w-[45rem] xl:px-32  shadow-2xl">
+      sm:w-[24rem] sm:ml-16   md:w-[24rem] md:ml-35  lg:w-[24rem] lg:ml-35  xl:w-[24rem] xl:ml-35  shadow-2xl">
 
         <form className=" card-body" onSubmit={handleProductPurchase}>
           <legend className='text-[indigo] text-xl'>Buy Product &nbsp;&nbsp;  
