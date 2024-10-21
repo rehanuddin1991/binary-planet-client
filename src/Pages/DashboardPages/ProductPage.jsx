@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useLoaderData, useNavigate } from 'react-router-dom'
- 
+import { AuthContext } from '../../provider/AuthProvider';
 import toast from 'react-hot-toast'
 import axios from 'axios';
 
 import { backend_uri } from '../../CommonResources';
-import { AuthContext } from '../../Provider/AuthProvider';
+ 
 import ProductShow from '../../Components/Shared/ProductShow';
 import { Helmet } from 'react-helmet-async';
+
 
 
 const ProductPage = () => {
@@ -47,6 +48,8 @@ const ProductPage = () => {
     //console.log(product_category,"cat")
     const product_price = form.get("product_price");
     const product_rating = form.get("product_rating");
+    const product_description = form.get("product_description");
+    const product_quantity = form.get("product_quantity");
     const image = form.get("image");
 
 
@@ -65,6 +68,8 @@ const ProductPage = () => {
             productName: product_name,
             productPrice: product_price,
             productCategory: product_category,
+            productDescription: product_description,
+            productQuantity: product_quantity,
             productRating: product_rating,
             imageURL: image_url
           }
@@ -78,7 +83,7 @@ const ProductPage = () => {
             .then(response => response.json())
             .then((data) => {
               if (data.insertedId) {
-                toast.success('product Saved Successfully!');
+                toast.success('Product Saved Successfully!');
                 setproductData(data);
                 navigate("/dashboard/product")
 
@@ -115,11 +120,31 @@ const ProductPage = () => {
 
         <form className=" card-body" onSubmit={handleproductAdd}>
           <legend className='text-[indigo] text-xl'>Add Product</legend>
+
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Product Name</span>
+              <span className="label-text font-semibold">Product Name</span>
             </label>
             <input type="text" name="product_name" placeholder="Input Your Product Name" className="input 
+            input-bordered input-info w-full max-w-xs" required />
+          </div>
+
+
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text font-semibold">Product Description</span>
+            </label>
+            <input type="text" name="product_description" placeholder="Input Your Product Description" className="input 
+            input-bordered input-info w-full max-w-xs" required />
+          </div>
+
+
+
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text font-semibold">Product Quantity</span>
+            </label>
+            <input type="text" name="product_quantity" placeholder="Product Quantity" className="input 
             input-bordered input-info w-full max-w-xs" required />
           </div>
 
@@ -156,14 +181,14 @@ const ProductPage = () => {
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Product Price</span>
+              <span className="label-text font-semibold">Unit Price</span>
             </label>
             <input type="text" name="product_price" placeholder="Input Your Product Price" className="input input-bordered input-info w-full max-w-xs" required />
           </div>
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Rating</span>
+              <span className="label-text font-semibold">Rating</span>
             </label>
             <input type="text" name="product_rating" placeholder="Input Your Product Rating" className="input input-bordered input-info w-full max-w-xs" required />
           </div>

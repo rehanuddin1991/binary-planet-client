@@ -55,20 +55,23 @@ const handleToggle=(e)=>
        className='w-[16rem] h-20 xs:w-[19rem] xs:h-[4.5rem]' alt="" /> </NavLink> &nbsp; &nbsp;
     </div>
     <div className="navbar-center text-3xl font-bold xs:hidden ssm:hidden sm:hidden  md:flex lg:flex ">
-      <ul className="menu menu-horizontal px-3 text-[midnightblue]">
+      <ul className="menu menu-horizontal px-3 text-[midnightblue] flex justify-center items-center gap-5">
          <NavLink className="lg:text-[1rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]"  to="/">Home </NavLink>   &nbsp; &nbsp; &nbsp; &nbsp; 
          <NavLink className="lg:text-[1rem] dark:text-white xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]" to="/allproducts">All Products </NavLink>  
+         <NavLink className="lg:text-[1rem] dark:text-white xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]" to="/contact">Contact </NavLink>  
+         <NavLink className="lg:text-[1rem] dark:text-white xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]" to="/about">About </NavLink>  
         
          
       </ul>
     </div>
-    <div className="navbar-end flex gap-4 items-center   ">
+    <div className="navbar-end flex gap-7 xs:gap-2 ssm:gap-2 justify-center  items-center   ">
       {
          user?   (
           <> 
           {/* <NavLink className=" lg:text-[1.2rem] xs:text-[0.8rem] md:text-[0.8rem] ssm:text-[0.9rem]  xs:py-1 xs:px-1 " to="/register">Register</NavLink>   */}
-          <NavLink title="Dashboard" className="lg:text-[1rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]  xs:py-1 xs:px-1 " to="/dashboard">
-             <MdSpaceDashboard className="w-6 h-6" />
+          <NavLink title="Dashboard" className="lg:text-[0.8rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem] 
+           xs:py-1 xs:px-1 " to="/dashboard">
+             <MdSpaceDashboard className="w-9 h-9" />
           </NavLink>  
           </>
                

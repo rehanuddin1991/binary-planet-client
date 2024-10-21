@@ -15,6 +15,10 @@ const EditProduct = () => {
         setError(null);
         const form = new FormData(e.currentTarget);
         const product_name = form.get("product_name");
+        const product_description = form.get("product_description");
+        const product_rating = form.get("product_rating");
+        const product_price = form.get("product_price");
+        const product_quantity = form.get("product_quantity");
         const image = form.get("image");
 
         if( document.getElementById("image").files.length == 0 ){
@@ -22,9 +26,13 @@ const EditProduct = () => {
              
                 const inputObj = {
                     productName: product_name,
+                    productDescription: product_description,
+                    productRating: product_rating,
+                    productPrice: product_price, 
+                    productQuantity: product_quantity, 
                     imageURL:loaderData.imageURL,
                 }
-
+                console.log(23333,inputObj)
                 const inputData = {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
@@ -57,6 +65,10 @@ const EditProduct = () => {
                     try {
                         const inputObj = {
                             productName: product_name,
+                            productDescription: product_description,
+                            productRating: product_rating,
+                            productPrice: product_price, 
+                            productQuantity: product_quantity,
                             imageURL: image_url,
 
                         }
@@ -121,7 +133,27 @@ const EditProduct = () => {
                     <label className="label">
                         <span className="label-text">Product Name</span>
                     </label>
-                    <input type="text" defaultValue={loaderData?.productName} name="product_name" placeholder="Input Your product Name" className="input input-bordered input-info w-full max-w-xs" required />
+                    <input type="text" defaultValue={loaderData?.productName} name="product_name"
+                      className="input input-bordered input-info w-full max-w-xs" required />
+                </div>
+
+
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Product Description</span>
+                    </label>
+                    <input type="text" defaultValue={loaderData?.productDescription} name="product_description" 
+                      className="input input-bordered input-info w-full max-w-xs" required />
+                </div>
+
+
+
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Product Quantity</span>
+                    </label>
+                    <input type="text" defaultValue={loaderData?.productQuantity} name="product_quantity" 
+                      className="input input-bordered input-info w-full max-w-xs" required />
                 </div>
 
 
@@ -132,6 +164,21 @@ const EditProduct = () => {
                     </label>
                     <input type="file" id='image' name="image" className=""  />
                 </div>
+
+                <div className="form-control">
+            <label className="label">
+              <span className="label-text font-semibold">Unit Price</span>
+            </label>
+            <input type="text" name="product_price" defaultValue={loaderData?.productPrice} className="input input-bordered input-info w-full max-w-xs" required />
+          </div>
+
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text font-semibold">Rating</span>
+            </label>
+            <input type="text" name="product_rating" defaultValue={loaderData?.productRating} className="input input-bordered input-info w-full max-w-xs" required />
+          </div>
+
 
 
 
