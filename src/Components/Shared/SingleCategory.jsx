@@ -14,7 +14,7 @@ const SingleCategory = ({ props }) => {
                         alt="category" />
                 </figure>
                 <div className="card-body text-center mx-auto">
-                    <h2 className="card-title mx-auto text-2xl text-[indigo]"> {categoryName}</h2>
+                    <h2 className="card-title mx-auto text-2xl text-[indigo] dark:text-[white]"> {categoryName}</h2>
                     
                     <div className="card-actions justify-end ">
                         <button className="hover:text-[white] hover:bg-[indigo] btn h-[2rem] max-h-[2rem] text-[white] bg-[darkcyan]">

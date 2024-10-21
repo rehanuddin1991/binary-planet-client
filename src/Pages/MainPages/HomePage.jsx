@@ -8,7 +8,7 @@ import FeaturedProducts from '../../Components/Shared/FeaturedProducts'
 
 const HomePage = () => {
   return (
-   <>
+   <div className='dark:bg-[#1D232A] dark:text-[white]'>
     <Helmet>
     <title>Binary Planet</title>
 
@@ -19,7 +19,7 @@ const HomePage = () => {
    <FAQsection></FAQsection>
   <UserReviewSection></UserReviewSection> 
    
-    </>
+    </div>
   )
 }
 

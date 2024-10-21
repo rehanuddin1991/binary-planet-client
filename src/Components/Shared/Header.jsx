@@ -5,10 +5,12 @@ import { MdDashboard, MdSpaceDashboard } from "react-icons/md";
 import logo from '../../assets/logo.png'
 import { RxDashboard } from "react-icons/rx";
 import { IoMdLogIn } from "react-icons/io";
+import '../../App.css';
 const Header = () => {
   const { user } = useContext(AuthContext);
 
   const [theme,setTheme]=useState( localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
+   
 useEffect(()=>{
   localStorage.setItem("theme",theme);  
   const localTheme=localStorage.getItem("theme");
@@ -17,12 +19,14 @@ useEffect(()=>{
 
 const handleToggle=(e)=>
 {
-if(e.target.checked) setTheme("dark"); else setTheme("light")
+    if(e.target.checked) setTheme("dark"); else setTheme("light")
+    theme==="light"?"dark":"light";
+    
 
 }
   return (
-    <div className="navbar bg-base-100 px-1">
-    <div className="navbar-start">
+    <div className=" navbar bg-base-100 px-1  dark:text-white">
+    <div className=" navbar-start ">
       <div className="dropdown hidden xs:block ssm:block">
         <div tabIndex={0} role="button" className="btn btn-ghost    ">
           <svg
@@ -40,10 +44,10 @@ if(e.target.checked) setTheme("dark"); else setTheme("light")
         </div>
         <ul
           tabIndex={0}
-          className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-4 text-[darkcyan] font-bold w-52
+          className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-4 text-[darkcyan] dark:text-white font-bold w-52
            px-4 shadow">
          <li><NavLink to="/">Home </NavLink> </li>
-         <li><NavLink to="/allproducts">All Products </NavLink> </li>
+         <li><NavLink  to="/allproducts">All Products </NavLink> </li>
         </ul>
       </div>
       {/* className="btn btn-ghost  xs:text-[0.9rem] ssm:text-[0.9rem] lg:text-xl md:text-xl sm:text-xl" */}
@@ -53,7 +57,7 @@ if(e.target.checked) setTheme("dark"); else setTheme("light")
     <div className="navbar-center text-3xl font-bold xs:hidden ssm:hidden sm:hidden  md:flex lg:flex ">
       <ul className="menu menu-horizontal px-3 text-[midnightblue]">
          <NavLink className="lg:text-[1rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]"  to="/">Home </NavLink>   &nbsp; &nbsp; &nbsp; &nbsp; 
-         <NavLink className="lg:text-[1rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]" to="/allproducts">All Products </NavLink>  
+         <NavLink className="lg:text-[1rem] dark:text-white xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]" to="/allproducts">All Products </NavLink>  
         
          
       </ul>
@@ -62,7 +66,7 @@ if(e.target.checked) setTheme("dark"); else setTheme("light")
       {
          user?   (
           <> 
-          <NavLink className=" lg:text-[1.2rem] xs:text-[0.8rem] md:text-[0.8rem] ssm:text-[0.9rem]  xs:py-1 xs:px-1 " to="/register">Register</NavLink>  
+          {/* <NavLink className=" lg:text-[1.2rem] xs:text-[0.8rem] md:text-[0.8rem] ssm:text-[0.9rem]  xs:py-1 xs:px-1 " to="/register">Register</NavLink>   */}
           <NavLink title="Dashboard" className="lg:text-[1rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]  xs:py-1 xs:px-1 " to="/dashboard">
              <MdSpaceDashboard className="w-6 h-6" />
           </NavLink>  

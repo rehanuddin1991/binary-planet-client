@@ -60,16 +60,16 @@ const RegisterPage = () => {
 
     }
   return (
-<>
+<div className='dark:text-[white] dark:bg-[#1D232A]'>
 <Helmet>
     <title>Register Here</title>
 
     </Helmet>
-    <div className=" mt-10 mx-auto         card bg-base-100  xs:max-w-[22rem] ssm:max-w-[20rem]
+    <div className=" mt-10 mx-auto dark:text-[white] dark:bg-[#1D232A]        card bg-base-100  xs:max-w-[22rem] ssm:max-w-[20rem]
       sm:max-w-[28rem] lg:max-w-[34rem] md:max-w-[29rem] shadow-2xl">
        
         <form className="card-body" onSubmit={handleRegister}>
-          <legend className='text-[indigo] text-xl'>Register Here</legend>
+          <legend className='text-[indigo] dark:text-[white]   text-xl'>Register Here</legend>
           <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
@@ -153,7 +153,7 @@ const RegisterPage = () => {
     </div>
   
       
-      </>
+      </div>
   )
 }
 

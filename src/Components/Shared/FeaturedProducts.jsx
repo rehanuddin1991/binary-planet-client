@@ -7,12 +7,12 @@ import five from '../../assets/features/5.jpg'
 import six from '../../assets/features/6.jpg'
 
 const FeaturedProducts = () => {
-    return (<>
-    <div className='flex items-center justify-center xs:text-xl text-3xl text-[indigo] mt-14 font-semibold'>
+    return (<div className='dark:bg-[#1D232A] dark:text-[white]'>
+    <div className='flex items-center justify-center xs:text-xl text-3xl text-[indigo] dark:text-[white] mt-14 font-semibold'>
         <h1>Featured Products </h1>
         
     </div>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-3  md:ml-10'>
+        <div className='  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-3  md:ml-10'>
             <div className="card bg-base-100 w-80 text-2xl xs:w-[17rem] xs:-ml-8 shadow-xl">
 
                 <figure className="px-10 pt-10">
@@ -124,7 +124,7 @@ const FeaturedProducts = () => {
 
 
         </div>
-    </>
+    </div>
     )
 }
 

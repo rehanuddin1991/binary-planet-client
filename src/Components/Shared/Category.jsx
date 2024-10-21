@@ -22,7 +22,7 @@ const Category = () => {
         fetchCategoryData();
       }, []);
 
-      return  ( <>
+      return  ( <div className='dark:text-[white] dark:bg-[#1D232A]'>
        <div className='flex items-center justify-center xs:text-xl text-3xl text-[darkcyan] mt-14 font-semibold'>
         <h1>Featured Category        </h1>
     </div>
@@ -37,7 +37,7 @@ const Category = () => {
           }
              
         </div>
-        </>
+        </div>
       )
  
 }
