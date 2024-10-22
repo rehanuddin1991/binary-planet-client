@@ -11,7 +11,8 @@ const CategoryWiseProducts = () => {
     //const [allData,setAllData]=useState(allLoaderData)
 
     //console.log(allLoaderData,8888)
-    return  ( 
+    return  (
+      <div className='dark:text-[white] dark:bg-[#1D232A]'>
         <div className='  mt-8   grid grid-cols-1 gap-4 justify-around items-center 
          sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mx-auto sm:ml-10  '> 
           {
@@ -22,6 +23,7 @@ const CategoryWiseProducts = () => {
           }
              
         </div>
+        </div> 
       )
 }
 

@@ -76,11 +76,11 @@ const ProductDetails = () => {
                 </figure>
                 <div className="card-body text-center text-xl font-semibold text-[midnightblue]">
                     <p>
-                    {loaderData?.productName}
+                    Product Name: {loaderData?.productName}
                         
                     </p>
-                    <p>{loaderData?.productPrice}</p>
-                    <p>{loaderData?.productRating}</p>
+                    <p>Price: {loaderData?.productPrice}</p>
+                    <p>Rating: {loaderData?.productRating}</p>
                     <div className="card-actions justify-center">
                           <button className='btn btn-info'
                          onClick={()=>document.getElementById('my_modal_5').showModal()}
@@ -124,6 +124,16 @@ const ProductDetails = () => {
             input-bordered input-info w-full max-w-xs" required />
             <input type="hidden" name="user_id" value={user?.uid} />
             <input type="hidden" name="product_id" value={loaderData?._id} />
+          </div>
+
+
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Customer Email</span>
+            </label>
+            <input defaultValue={user?.email} readOnly type="text" name="customer_email"   className="input 
+            input-bordered input-info w-full max-w-xs" required />
+             
           </div>
 
 

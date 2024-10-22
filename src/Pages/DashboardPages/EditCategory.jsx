@@ -59,6 +59,7 @@ const EditCategory = () => {
                     try {
                         const inputObj = {
                             categoryName: category_name,
+                            categoryDescription: category_description,
                             imageURL: image_url,
 
                         }

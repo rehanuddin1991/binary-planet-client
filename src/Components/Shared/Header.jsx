@@ -25,8 +25,8 @@ const handleToggle=(e)=>
 
 }
   return (
-    <div className=" navbar bg-base-100 px-1  dark:text-white">
-    <div className=" navbar-start ">
+    <div className="mt-4 navbar bg-base-100 px-1  dark:text-white">
+    <div className=" navbar-start w-[75%] ">
       <div className="dropdown hidden xs:block ssm:block">
         <div tabIndex={0} role="button" className="btn btn-ghost    ">
           <svg
@@ -52,7 +52,7 @@ const handleToggle=(e)=>
       </div>
       {/* className="btn btn-ghost  xs:text-[0.9rem] ssm:text-[0.9rem] lg:text-xl md:text-xl sm:text-xl" */}
       <NavLink to="/" ><img src={logo}
-       className='w-[16rem] h-20 xs:w-[19rem] xs:h-[4.5rem]' alt="" /> </NavLink> &nbsp; &nbsp;
+       className='w-[16rem] h-20 xs:w-[9rem] xs:h-[4.5rem] ssm:w-[9rem] ssm:h-[4.5rem] ' alt="" /> </NavLink> &nbsp; &nbsp;
     </div>
     <div className="navbar-center text-3xl font-bold xs:hidden ssm:hidden sm:hidden  md:flex lg:flex ">
       <ul className="menu menu-horizontal px-3 text-[midnightblue] flex justify-center items-center gap-5">
@@ -64,14 +64,14 @@ const handleToggle=(e)=>
          
       </ul>
     </div>
-    <div className="navbar-end flex gap-7 xs:gap-2 ssm:gap-2 justify-center  items-center   ">
+    <div className="navbar-end  w-[25%] flex gap-7 xs:gap-2 ssm:gap-2 justify-center  items-center   ">
       {
          user?   (
           <> 
           {/* <NavLink className=" lg:text-[1.2rem] xs:text-[0.8rem] md:text-[0.8rem] ssm:text-[0.9rem]  xs:py-1 xs:px-1 " to="/register">Register</NavLink>   */}
           <NavLink title="Dashboard" className="lg:text-[0.8rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem] 
            xs:py-1 xs:px-1 " to="/dashboard">
-             <MdSpaceDashboard className="w-9 h-9" />
+             <MdSpaceDashboard className="w-9 h-9 xs:w-7 xs:h-7 ssm:w-8 ssm:h-8" />
           </NavLink>  
           </>
                

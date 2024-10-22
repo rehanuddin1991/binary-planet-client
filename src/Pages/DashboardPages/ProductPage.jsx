@@ -125,7 +125,7 @@ const ProductPage = () => {
             <label className="label">
               <span className="label-text font-semibold">Product Name</span>
             </label>
-            <input type="text" name="product_name" placeholder="Input Your Product Name" className="input 
+            <input type="text" name="product_name" placeholder="Input Product Name" className="input 
             input-bordered input-info w-full max-w-xs" required />
           </div>
 
@@ -134,7 +134,7 @@ const ProductPage = () => {
             <label className="label">
               <span className="label-text font-semibold">Product Description</span>
             </label>
-            <input type="text" name="product_description" placeholder="Input Your Product Description" className="input 
+            <input type="text" name="product_description" placeholder="Input Product Description" className="input 
             input-bordered input-info w-full max-w-xs" required />
           </div>
 

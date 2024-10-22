@@ -97,7 +97,7 @@ const CategoryPage = () => {
                 <label className="label">
                   <span className="label-text font-semibold">Category Name</span>
                 </label>
-                <input type="text" name="category_name" placeholder="Input Your Category Name" className="input input-bordered input-info w-full max-w-xs" required />
+                <input type="text" name="category_name" placeholder="Input Category Name" className="input input-bordered input-info w-full max-w-xs" required />
               </div>
 
               <div className="form-control">
