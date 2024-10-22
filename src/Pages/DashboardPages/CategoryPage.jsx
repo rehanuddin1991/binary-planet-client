@@ -143,7 +143,7 @@ const CategoryPage = () => {
       </form>
 
       <div   className=" mt-6
-                      bg-[darkwheat] text-[aliceblue]">
+                      bg-[darkcyan] text-[aliceblue]">
           <table className="table " border="1">
             {/* head */}
             <thead className='text-[white] text-left'>
