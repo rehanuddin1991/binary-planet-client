@@ -2,7 +2,8 @@ import React from 'react'
 
 const DashboardFooter = () => {
   return (
-    <footer className="footer  bg-[darkcyan] xs:text-[0.7rem] ssm:text-[0.9rem] text-xl lg:text-2xl    text-[floralwhite] items-center p-3">
+    <footer className="footer dark:bg-[#1a2027] dark:text-[cyan] bg-[darkcyan] xs:text-[0.6rem] 
+    ssm:text-[0.9rem] text-xl lg:text-2xl    text-[floralwhite] items-center p-3">
     
     <nav className="flex items-center justify-betwen gap-4 sm:gap-x-4 md:gap-x-64 lg:gap-x-[51rem]  ">
     <aside className=" ">

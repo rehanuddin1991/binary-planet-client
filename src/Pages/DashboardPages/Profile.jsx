@@ -83,22 +83,22 @@ const Profile = () => {
   };
 
   return (
-    <div className="p-6 bg-white mt-4 sm:w-[26rem] sm:ml-12 lg:w-[37rem] xl:w-[50rem]
+    <div className="p-6 dark:bg-[#1D232A] dark:text-[white] bg-white mt-4 sm:w-[26rem] sm:ml-12 lg:w-[37rem] xl:w-[50rem]
      md:w-[27rem] xs:w-[18rem] ssm:w-[21rem] rounded-lg shadow-lg relative">
        <Helmet>
     <title>Profile Page</title>
 
     </Helmet>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center ">
         <img
           src={users?.photoURL}
           alt="Profile"
           className="w-36 h-36 object-cover rounded-full shadow-md"
         />
-        <h2 className="mt-4 text-2xl font-bold text-gray-800">
+        <h2 className="mt-4 text-2xl font-bold text-gray-800 dark:text-[white]">
           {users?.displayName}
         </h2>
-        <p className="text-gray-500">{users?.email}</p>
+        <p className="text-gray-500 dark:text-[white]">{users?.email}</p>
         <div>
           <strong
             className={!users?.isBlocked ? "text-green-500" : "text-red-500"}
@@ -109,9 +109,9 @@ const Profile = () => {
       </div>
 
       <div className="mt-6 w-full">
-        <h3 className="text-xl font-bold text-gray-700">Profile Details</h3>
+        <h3 className="text-xl font-bold text-gray-700 dark:text-[white]">Profile Details</h3>
         <hr />
-        <ul className="mt-3 text-gray-600 space-y-2">
+        <ul className="mt-3 text-gray-600 space-y-2 dark:text-[white]">
           <li>
             <strong>Role:</strong> {users?.isAdmin ? "Admin" : "User"}
           </li>

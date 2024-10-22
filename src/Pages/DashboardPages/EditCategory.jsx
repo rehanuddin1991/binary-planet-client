@@ -118,10 +118,10 @@ const EditCategory = () => {
     </Helmet>
 
             <form className="card-body" onSubmit={handleCategoryUpdate}>
-                <legend className='text-[indigo] text-xl'>Update Category</legend>
+                <legend className='text-[indigo] text-xl dark:text-[white]'>Update Category</legend>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Category Name</span>
+                        <span className="label-text dark:text-[wheat]">Category Name</span>
                     </label>
                     <input type="text" defaultValue={loaderData?.categoryName} name="category_name"
                       className="input input-bordered input-info w-full max-w-xs" required />
@@ -129,7 +129,7 @@ const EditCategory = () => {
 
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Category Description</span>
+                        <span className="label-text dark:text-[wheat]">Category Description</span>
                     </label>
                     <input type="text" defaultValue={loaderData?.categoryDescription} name="category_description" 
                        className="input input-bordered input-info w-full max-w-xs" required />
@@ -139,7 +139,7 @@ const EditCategory = () => {
 
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Image</span>
+                        <span className="label-text dark:text-[wheat]">Image</span>
                     </label>
                     <input type="file" id='image' name="image" className=""  />
                 </div>

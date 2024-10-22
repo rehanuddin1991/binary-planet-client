@@ -1,8 +1,13 @@
 import React from 'react'
+import { Helmet } from 'react-helmet-async'
 
 const ContactPage = () => {
   return (
     <div className='mt-14  text-3xl  flex items-center justify-center font-semibold '>
+      <Helmet>
+    <title>Contact Us</title>
+
+    </Helmet>
         <div className='space-y-5' >
             <h1 className='text-[indigo]'>Contact With Us</h1>
             <h2>Email:rehan.ictd@gmail.com</h2>

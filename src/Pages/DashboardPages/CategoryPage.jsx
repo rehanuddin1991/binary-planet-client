@@ -92,17 +92,17 @@ const CategoryPage = () => {
 
        
         <form className="card-body" onSubmit={handleCategoryAdd}>
-          <legend className='text-[indigo] text-xl  '>Add Category Data</legend>
+          <legend className='text-[indigo] dark:text-[white] text-xl  '>Add Category Data</legend>
           <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">Category Name</span>
+                  <span className="label-text font-semibold dark:text-[wheat]">Category Name</span>
                 </label>
                 <input type="text" name="category_name" placeholder="Input Category Name" className="input input-bordered input-info w-full max-w-xs" required />
               </div>
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">Category Description</span>
+                  <span className="label-text font-semibold dark:text-[wheat]">Category Description</span>
                 </label>
                 <input type="text" name="category_description" placeholder="Category Description" className="input input-bordered input-info w-full max-w-xs" required />
               </div>
@@ -111,7 +111,7 @@ const CategoryPage = () => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">Image</span>
+                  <span className="label-text font-semibold dark:text-[wheat]">Image</span>
                 </label>
                 <input type="file" name="image"   className="" required />
               </div>
@@ -143,7 +143,7 @@ const CategoryPage = () => {
       </form>
 
       <div   className=" mt-6
-                      bg-[darkcyan] text-[aliceblue]">
+                      bg-[darkwheat] text-[aliceblue]">
           <table className="table " border="1">
             {/* head */}
             <thead className='text-[white] text-left'>

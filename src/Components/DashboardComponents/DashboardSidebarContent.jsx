@@ -41,7 +41,7 @@ const DashboardSidebarContent = () => {
 
       {/* Open the modal using document.getElementById('ID').showModal() method */}
 
-      <div className={` xs:hidden  ssm:hidden  top-0 left-0  h-[100%]   ${isOpen ? "w-32" : "w-20"}   md:w-[19.25rem] lg:w-[25.75rem]  bg-gray-700 text-white transition-all duration-100 
+      <div className={` dark:bg-[#1a1f25] dark:text-[white] xs:hidden  ssm:hidden  top-0 left-0  h-[100%]   ${isOpen ? "w-32" : "w-20"}   md:w-[19.25rem] lg:w-[25.75rem]  bg-gray-700 text-white transition-all duration-100 
                 ease-out  `}>
         <div className='flex justify-between items-center p-4'>
           <h2 className={`  md:block ${isOpen ? "block" : "hidden"}`}>My App {user?.name} </h2>
@@ -100,7 +100,7 @@ const DashboardSidebarContent = () => {
         </nav>
       </div>
 
-      <div className="hidden ssm:block  xs:block xs:-mt-16 xs:-ml-4  ssm:-mt-16 ssm:-ml-4 navbar bg-base-100">
+      <div className="hidden ssm:block  xs:block xs:-mt-[4.3rem] xs:-ml-5  ssm:-mt-[4.3rem] ssm:-ml-5 navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">

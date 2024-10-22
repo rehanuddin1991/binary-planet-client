@@ -3,6 +3,7 @@ import { useLoaderData, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../Provider/AuthProvider';
 import toast from 'react-hot-toast';
 import { backend_uri } from '../../CommonResources';
+import { Helmet } from 'react-helmet-async';
 
 const ProductDetails = () => {
     const loaderData = useLoaderData();
@@ -67,6 +68,10 @@ const ProductDetails = () => {
 
     return (
         <>
+        <Helmet>
+    <title>Product Details</title>
+
+    </Helmet>
             <div className="mt-8 card bg-base-100 
              shadow-xl"><br /> <br />
                 <figure>

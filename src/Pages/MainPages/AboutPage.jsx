@@ -1,8 +1,13 @@
 import React from 'react'
+import { Helmet } from 'react-helmet-async'
 
 const AboutPage = () => {
   return (
     <div className='mt-14  text-3xl  flex items-center justify-center font-semibold '>
+      <Helmet>
+    <title>About Us</title>
+
+    </Helmet>
         <div className='space-y-5' >
             <h1 className='text-[indigo]'>About Us</h1>
             <h2>Binary Planet Ltd.</h2>

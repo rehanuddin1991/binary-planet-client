@@ -22,8 +22,8 @@ const Category = () => {
         fetchCategoryData();
       }, []);
 
-      return  ( <div className='dark:text-[white] dark:bg-[#1D232A]'>
-       <div className='flex items-center justify-center xs:text-xl text-3xl text-[darkcyan] mt-14 font-semibold'>
+      return  ( <div className='dark:text-[white] dark:bg-[#2d333b]'>
+       <div className='p-2 flex items-center justify-center xs:text-xl text-3xl text-[darkcyan] dark:text-[wheat] mt-14 font-semibold'>
         <h1>Featured Category        </h1>
     </div>
       

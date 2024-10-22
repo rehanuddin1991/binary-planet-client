@@ -124,18 +124,18 @@ const EditUsers = () => {
 
     </Helmet>
 
-            <form className="card-body" onSubmit={handleCategoryUpdate}>
-                <legend className='text-[indigo] text-xl'>Update User</legend>
+            <form className="card-body " onSubmit={handleCategoryUpdate}>
+                <legend className='text-[indigo] text-xl  dark:text-[white]'>Update User</legend>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Email</span>
+                        <span className="label-text dark:text-[wheat]">Email</span>
                     </label>
                     <input readOnly disabled type="text" defaultValue={loaderData?.email} name="email"
                       className="input input-bordered input-info w-full max-w-xs"  />
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Name</span>
+                        <span className="label-text dark:text-[wheat]">Name</span>
                     </label>
                     <input type="text" defaultValue={loaderData?.displayName} name="displayName"
                       className="input input-bordered input-info w-full max-w-xs" required />
@@ -143,7 +143,7 @@ const EditUsers = () => {
 
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Phone</span>
+                        <span className="label-text dark:text-[wheat]">Phone</span>
                     </label>
                     <input type="text" defaultValue={loaderData?.phone} name="phone" 
                        className="input input-bordered input-info w-full max-w-xs" required />
@@ -151,7 +151,7 @@ const EditUsers = () => {
 
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Address</span>
+                        <span className="label-text dark:text-[wheat]">Address</span>
                     </label>
                     <input type="text" defaultValue={loaderData?.address} name="address" 
                        className="input input-bordered input-info w-full max-w-xs" required />
@@ -161,7 +161,7 @@ const EditUsers = () => {
 
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Image</span>
+                        <span className="label-text dark:text-[wheat]">Image</span>
                     </label>
                     <input type="file" id='image' name="image" className=""  />
                 </div>
@@ -172,7 +172,7 @@ const EditUsers = () => {
 
 
                 <div className="form-control mt-4  ">
-                    <input className="mx-auto btn btn-primary w-24 lg:w-40 sm:w-24 md:w-32" type="submit" value="Update" />
+                    <input className="dark:text-[white] mx-auto btn btn-primary w-24 lg:w-40 sm:w-24 md:w-32" type="submit" value="Update" />
                     <br />
                     {
                         error ? error : ""

@@ -128,10 +128,10 @@ const EditProduct = () => {
     </Helmet>
 
             <form className="card-body" onSubmit={handleproductUpdate}>
-                <legend className='text-[indigo] text-xl'>Update Product</legend>
+                <legend className='text-[indigo] text-xl dark:text-[wheat]'>Update Product</legend>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Product Name</span>
+                        <span className="label-text dark:text-[wheat]">Product Name</span>
                     </label>
                     <input type="text" defaultValue={loaderData?.productName} name="product_name"
                       className="input input-bordered input-info w-full max-w-xs" required />
@@ -140,7 +140,7 @@ const EditProduct = () => {
 
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Product Description</span>
+                        <span className="label-text dark:text-[wheat]">Product Description</span>
                     </label>
                     <input type="text" defaultValue={loaderData?.productDescription} name="product_description" 
                       className="input input-bordered input-info w-full max-w-xs" required />
@@ -150,7 +150,7 @@ const EditProduct = () => {
 
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Product Quantity</span>
+                        <span className="label-text dark:text-[wheat]">Product Quantity</span>
                     </label>
                     <input type="text" defaultValue={loaderData?.productQuantity} name="product_quantity" 
                       className="input input-bordered input-info w-full max-w-xs" required />
@@ -160,21 +160,21 @@ const EditProduct = () => {
 
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Image</span>
+                        <span className="label-text dark:text-[wheat]">Image</span>
                     </label>
                     <input type="file" id='image' name="image" className=""  />
                 </div>
 
                 <div className="form-control">
             <label className="label">
-              <span className="label-text font-semibold">Unit Price</span>
+              <span className="label-text font-semibold dark:text-[wheat]">Unit Price</span>
             </label>
             <input type="text" name="product_price" defaultValue={loaderData?.productPrice} className="input input-bordered input-info w-full max-w-xs" required />
           </div>
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text font-semibold">Rating</span>
+              <span className="label-text font-semibold dark:text-[wheat]">Rating</span>
             </label>
             <input type="text" name="product_rating" defaultValue={loaderData?.productRating} className="input input-bordered input-info w-full max-w-xs" required />
           </div>
@@ -186,7 +186,7 @@ const EditProduct = () => {
 
 
                 <div className="form-control mt-4  ">
-                    <input className="mx-auto btn btn-primary w-24 lg:w-40 sm:w-24 md:w-32" type="submit" value="Update" />
+                    <input className="mx-auto btn btn-primary w-24 lg:w-40 sm:w-24 md:w-32 dark:text-[white]" type="submit" value="Update" />
                     <br />
                     {
                         error ? error : ""

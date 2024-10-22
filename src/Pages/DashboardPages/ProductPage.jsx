@@ -119,11 +119,11 @@ const ProductPage = () => {
       sm:w-[24rem] sm:ml-16   md:w-[24rem] md:ml-35 lg:w-[35rem] lg:ml-35 xl:w-[45rem] xl:px-32  shadow-2xl">
 
         <form className=" card-body" onSubmit={handleproductAdd}>
-          <legend className='text-[indigo] text-xl'>Add Product</legend>
+          <legend className='text-[indigo] text-xl dark:text-[whitesmoke]'>Add Product</legend>
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text font-semibold">Product Name</span>
+              <span className="label-text font-semibold dark:text-[wheat]">Product Name</span>
             </label>
             <input type="text" name="product_name" placeholder="Input Product Name" className="input 
             input-bordered input-info w-full max-w-xs" required />
@@ -132,7 +132,7 @@ const ProductPage = () => {
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text font-semibold">Product Description</span>
+              <span className="label-text font-semibold dark:text-[wheat]">Product Description</span>
             </label>
             <input type="text" name="product_description" placeholder="Input Product Description" className="input 
             input-bordered input-info w-full max-w-xs" required />
@@ -142,7 +142,7 @@ const ProductPage = () => {
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text font-semibold">Product Quantity</span>
+              <span className="label-text font-semibold dark:text-[wheat]">Product Quantity</span>
             </label>
             <input type="text" name="product_quantity" placeholder="Product Quantity" className="input 
             input-bordered input-info w-full max-w-xs" required />
@@ -152,14 +152,14 @@ const ProductPage = () => {
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Image</span>
+              <span className="label-text dark:text-[wheat]">Image</span>
             </label>
             <input type="file" name="image" className="" required />
           </div>
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Product Category</span>
+              <span className="label-text dark:text-[wheat]">Product Category</span>
             </label>
             <select name="product_category" id="product_category" required className='input input-bordered input-info dropdown-content  w-full
              max-w-xs'>
@@ -181,14 +181,14 @@ const ProductPage = () => {
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text font-semibold">Unit Price</span>
+              <span className="label-text font-semibold dark:text-[wheat]">Unit Price</span>
             </label>
             <input type="text" name="product_price" placeholder="Input Your Product Price" className="input input-bordered input-info w-full max-w-xs" required />
           </div>
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text font-semibold">Rating</span>
+              <span className="label-text font-semibold dark:text-[wheat]">Rating</span>
             </label>
             <input type="text" name="product_rating" placeholder="Input Your Product Rating" className="input input-bordered input-info w-full max-w-xs" required />
           </div>
@@ -204,7 +204,7 @@ const ProductPage = () => {
 
 
           <div className="form-control mt-4  ">
-            <input className="mx-auto btn btn-primary w-24  md:-ml-0 lg:-ml-0 md:w-40 lg:w-40" type="submit" value="Save" />
+            <input className="mx-auto btn btn-primary w-24  md:-ml-0 lg:-ml-0 md:w-40 lg:w-40 dark:text-[whitesmoke] dark:bg-[darkblue]" type="submit" value="Save" />
             <br />
             {
               error ? error : ""
