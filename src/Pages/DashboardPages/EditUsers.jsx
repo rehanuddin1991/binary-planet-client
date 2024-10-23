@@ -119,8 +119,8 @@ const EditUsers = () => {
 
     }
     return (
-        <div className=" mt-10 mx-auto         card bg-base-100  xs:w-[18rem] ssm:max-w-[20rem]
-    sm:max-w-[28rem] lg:max-w-[34rem] md:max-w-[29rem] shadow-2xl">
+        <div className=" mt-10 mx-auto         card bg-base-100  xs:w-[18rem] ssm:w-[22rem]
+    sm:w-[23rem] lg:w-[34rem] md:w-[29rem] shadow-2xl">
          <Helmet>
     <title>Edit User</title>
 
@@ -132,10 +132,10 @@ const EditUsers = () => {
                     <label className="label">
                         <span className="label-text dark:text-[wheat]">Email</span>
                     </label>
-                    <input readOnly disabled type="text"   {...register("email", {
+                    <input readOnly  type="text"   {...register("email", {
                                     required:false
                                 })}
-                      className="input input-bordered input-info w-full max-w-xs"  />
+                      className="text-[indigo] dark:text-[wheat] input input-bordered input-info w-full max-w-xs"  />
                 </div>
                 <div className="form-control">
                     <label className="label">

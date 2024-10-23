@@ -81,7 +81,7 @@ const DashboardSidebarContent = () => {
               <FaUsers size={24} />
               <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>All Users</span>
             </NavLink>
-            
+
              <NavLink to="/dashboard/category" className='flex items-center p-4  hover:bg-gray-700 hover:text-[orange]  cursor-pointer'>
               <MdCategory size={24} />
               <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>Add Category  </span>
@@ -131,10 +131,21 @@ const DashboardSidebarContent = () => {
               <NavLink className="text-black dark:text-[wheat]  " to="/dashboard"><span><FaHome size={14} />Home</span></NavLink>
               <NavLink className="text-black dark:text-[wheat] " to="/dashboard"><span><FaUserAlt size={14} />Profile</span></NavLink>
                
-
-              <NavLink to="/dashboard/category" className="text-black dark:text-[wheat] "  ><span><MdCategory size={14} />Add Category</span></NavLink>
+            {user?.isAdmin &&
+            <>
+            
+              <NavLink to="/dashboard/allUsers"  className="text-black dark:text-[wheat] "  >
+              
+              <span><FaUsers size={24} />All Users</span>
+            </NavLink>
+            <NavLink to="/dashboard/category" className="text-black dark:text-[wheat] "  ><span><MdCategory size={14} />Add Category</span></NavLink>
               <NavLink to="/dashboard/product" className="text-black dark:text-[wheat] "  ><span><MdCategory size={14} />Add Product</span></NavLink>
-              <NavLink className="text-black dark:text-[wheat] "  to="/dashboard"><span><FaHome size={14} />Home</span></NavLink>
+               
+            
+            </>
+
+            }
+             
               <NavLink className="text-black dark:text-[wheat] " onClick={handleSignout}><span><FaSignOutAlt size={14} />Logout</span></NavLink>
               
             </ul>
