@@ -8,7 +8,7 @@ import { IoMdLogIn } from "react-icons/io";
 import '../../App.css';
 const Header = () => {
   const { user } = useContext(AuthContext);
-
+  localStorage.removeItem("theme");
   const [theme,setTheme]=useState( localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
    
 useEffect(()=>{
@@ -19,8 +19,10 @@ useEffect(()=>{
 
 const handleToggle=(e)=>
 {
-    if(e.target.checked) setTheme("dark"); else setTheme("light")
-    theme==="light"?"dark":"light";
+  e.preventDefault();
+   if(e.target.checked) setTheme("dark"); else setTheme("light")
+    //theme==="light"?"dark":"light";
+   //setTheme(theme==="dark"?"light":"dark")
     
 
 }

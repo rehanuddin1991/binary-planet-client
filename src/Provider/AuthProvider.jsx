@@ -34,6 +34,7 @@ const AuthProvider = ({children}) => {
         `${backend_uri}/user`,
         {
           method: "POST",
+          
           headers: {
             "Content-Type": "application/json",
           },
@@ -46,7 +47,7 @@ const AuthProvider = ({children}) => {
             photoURL: image || "https://i.ibb.co/k6hTYW1/Alien-Dev.jpg",
             //address: address,
             isAdmin: false, // Default role
-            isBlocked: false, // Default status
+            isBlocked: false // Default status
           }),
         }
       );
@@ -125,12 +126,12 @@ const AuthProvider = ({children}) => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
         try {
-          //console.log("first,",currentUser.uid)
-          //console.log(`${backend_uri}/user/${currentUser.uid}`)
+          //console.log("current user ,",currentUser)
+         // console.log(`from auth:  ${backend_uri}/user/${currentUser.uid}`)
           const res = await fetch(
             `${backend_uri}/user/${currentUser.uid}`
           );
-          console.log(res);
+          //console.log(res);
           if (!res.ok) {
             throw new Error("Failed to fetch user data.");
           }

@@ -49,7 +49,7 @@ const handleToggle=(e)=>
        
        </NavLink>
       <h1 className='xs:text-[0.7rem] ssm:text-[0.7rem]  text-xl p-1 text-[navyblue] 
-      font-semibold  dark:text-[white]'>  {user?.email} 
+      font-semibold  dark:text-[white]'>  {user?.displayName} 
 
        
         

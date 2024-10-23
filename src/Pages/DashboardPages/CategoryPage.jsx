@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
-import { Link, useLoaderData, useNavigate } from 'react-router-dom'
+import { Link, useFormAction, useLoaderData, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
-
+import { useForm } from 'react-hook-form';
 import { backend_uri } from '../../CommonResources';
 import { AuthContext } from '../../Provider/AuthProvider';
 import CategoryShow from '../../Components/Shared/CategoryShow';
@@ -14,15 +14,19 @@ const CategoryPage = () => {
   const [error, setError] = useState(null);
   const { createUser } = useContext(AuthContext)
   const navigate = useNavigate();
-  const handleCategoryAdd = async    (e) => {
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    defaultValues: {  category_name: '' }
+});
+  const handleCategoryAdd = async    (form_data) => 
+    {
 
-
-      e.preventDefault();
-      setError(null);
-      const form = new FormData(e.currentTarget);
-      const category_name = form.get("category_name");       
-      const category_description = form.get("category_description");       
-      const image = form.get("image");
+      //form_data.preventDefault();
+       
+      //setError(null);
+      // const form = new FormData(e.currentTarget);
+      // const category_name = form.get("category_name");       
+      // const category_description = form.get("category_description");       
+      const image = form_data.image[0];
      
 
       const data=new FormData();
@@ -38,8 +42,8 @@ const CategoryPage = () => {
         //console.log(email)
       try {
         const inputObj={
-            categoryName:category_name,
-            categoryDescription:category_description,
+            categoryName:form_data.category_name,
+            categoryDescription:form_data.category_description,
             imageURL:image_url
         }
 
@@ -91,20 +95,31 @@ const CategoryPage = () => {
 
 
        
-        <form className="card-body" onSubmit={handleCategoryAdd}>
+        <form className="card-body" onSubmit={handleSubmit(handleCategoryAdd)} >
           <legend className='text-[indigo] dark:text-[white] text-xl  '>Add Category Data</legend>
           <div className="form-control">
                 <label className="label">
                   <span className="label-text font-semibold dark:text-[wheat]">Category Name</span>
                 </label>
-                <input type="text" name="category_name" placeholder="Input Category Name" className="input input-bordered input-info w-full max-w-xs" required />
+                <input type="text" {...register("category_name", {
+                                    required: "Category Name is Required"
+                                })}   placeholder="Input Category Name" className="input input-bordered input-info w-full
+                                 max-w-xs"   />
+             
+                                <br />
+                                {errors.category_name && <p className='text-red-500 text-xs'>{errors.category_name.message}</p>}
               </div>
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold dark:text-[wheat]">Category Description</span>
+                  <span className="label-text font-semibold  dark:text-[wheat]">Category Description</span>
                 </label>
-                <input type="text" name="category_description" placeholder="Category Description" className="input input-bordered input-info w-full max-w-xs" required />
+                <input type="text"  {...register("category_description", {
+                                    required: "Description is Required"
+                                })}   placeholder="Category Description" className="input input-bordered input-info w-full max-w-xs"
+                                   />
+                <br />
+                                {errors.category_description && <p className='text-red-500 text-xs'>{errors.category_description.message}</p>}
               </div>
 
          
@@ -113,7 +128,10 @@ const CategoryPage = () => {
                 <label className="label">
                   <span className="label-text font-semibold dark:text-[wheat]">Image</span>
                 </label>
-                <input type="file" name="image"   className="" required />
+                <input type="file" {...register("image", {
+                                    required: "Photo is Required"
+                                })}   className=""   />
+                                <br /> {errors.image && <p className='text-red-500 text-xs'>{errors.image.message}</p>}
               </div>
 
 

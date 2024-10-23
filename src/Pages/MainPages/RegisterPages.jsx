@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import { AuthContext } from '../../provider/AuthProvider';
+ 
 import { backend_uri } from '../../CommonResources';
 import { Helmet } from 'react-helmet-async';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const RegisterPage = () => {
   const [error, setError] = useState(null);
@@ -38,13 +39,20 @@ const RegisterPage = () => {
         const image_url=data.data.display_url;
         //console.log(email)
       try {
-        await createUser(email,password,name,phone,address,image_url);
+        const createdUser= await createUser(email,password,name,phone,address,image_url);
+        //const reslt=await createdUser.json();   
+        //console.log('created user',reslt);
         toast.success('Successfully Registered!');
+         e.target.name.value="";
+         e.target.email.value="";
+         e.target.password.value="";
+           navigate("/");
       } catch (error) {
         setError(error.message)
       }
       }
       )
+
      
       
       
@@ -52,10 +60,7 @@ const RegisterPage = () => {
        
              
          
-          // e.target.name.value="";
-          // e.target.email.value="";
-          // e.target.password.value="";
-          // navigate("/");
+         
 
 
     }
@@ -65,8 +70,12 @@ const RegisterPage = () => {
     <title>Register Here</title>
 
     </Helmet>
-    <div className=" mt-10 mx-auto dark:text-[white] dark:bg-[#1D232A]        card bg-base-100  xs:max-w-[22rem] ssm:max-w-[20rem]
-      sm:max-w-[28rem] lg:max-w-[34rem] md:max-w-[29rem] shadow-2xl">
+   
+
+
+<div className=" mt-10   dark:text-[white] dark:bg-[#1D232A]            card bg-base-100  xs:w-[16rem] xs:-ml-8  
+ ssm:w-[20rem] ssm:-ml-3 
+      sm:w-[24rem] sm:ml-32  md:w-[24rem] md:ml-40  lg:w-[35rem] lg:ml-35 xl:w-[45rem] xl:px-32  shadow-2xl">
        
         <form className="card-body" onSubmit={handleRegister}>
           <legend className='text-[indigo] dark:text-[white]   text-xl'>Register Here</legend>
