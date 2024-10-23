@@ -66,10 +66,7 @@ const DashboardSidebarContent = () => {
               <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>Profile</span>
             </NavLink>
 
-            <NavLink to="/dashboard/allUsers" className='flex items-center p-4 hover:text-[orange]   hover:bg-gray-700 cursor-pointer'>
-              <FaUsers size={24} />
-              <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>All Users</span>
-            </NavLink>
+           
 
             
 
@@ -78,8 +75,14 @@ const DashboardSidebarContent = () => {
               <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>Settings</span>
             </NavLink>
 
-
-            <NavLink to="/dashboard/category" className='flex items-center p-4  hover:bg-gray-700 hover:text-[orange]  cursor-pointer'>
+          {user?.isAdmin && (
+            <>
+             <NavLink to="/dashboard/allUsers" className='flex items-center p-4 hover:text-[orange]   hover:bg-gray-700 cursor-pointer'>
+              <FaUsers size={24} />
+              <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>All Users</span>
+            </NavLink>
+            
+             <NavLink to="/dashboard/category" className='flex items-center p-4  hover:bg-gray-700 hover:text-[orange]  cursor-pointer'>
               <MdCategory size={24} />
               <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>Add Category  </span>
             </NavLink>
@@ -88,6 +91,11 @@ const DashboardSidebarContent = () => {
               <MdCategory size={24} />
               <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>Add Product  </span>
             </NavLink>
+            </>
+
+            
+          )}
+           
 
 
             <NavLink onClick={handleSignout} className='flex text-[white] items-center p-4  hover:bg-gray-700 hover:text-[orange]  cursor-pointer'>
@@ -100,7 +108,7 @@ const DashboardSidebarContent = () => {
         </nav>
       </div>
 
-      <div className="hidden ssm:block  xs:block xs:-mt-[4.3rem] xs:-ml-5  ssm:-mt-[4.3rem] ssm:-ml-5 navbar bg-base-100">
+      <div className="hidden ssm:block  xs:block  xs:-mt-[4.3rem] xs:-ml-5  ssm:-mt-[4.3rem] ssm:-ml-5 navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -120,14 +128,14 @@ const DashboardSidebarContent = () => {
             <ul
               tabIndex={0}
               className="ml-3 menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-3 space-y-2 shadow">
-              <NavLink className="text-black" to="/dashboard"><span><FaHome size={14} />Home</span></NavLink>
-              <NavLink className="text-black" to="/dashboard"><span><FaUserAlt size={14} />Profile</span></NavLink>
+              <NavLink className="text-black dark:text-[wheat]  " to="/dashboard"><span><FaHome size={14} />Home</span></NavLink>
+              <NavLink className="text-black dark:text-[wheat] " to="/dashboard"><span><FaUserAlt size={14} />Profile</span></NavLink>
                
 
-              <NavLink to="/dashboard/category" className="text-black"  ><span><MdCategory size={14} />Add Category</span></NavLink>
-              <NavLink to="/dashboard/product" className="text-black"  ><span><MdCategory size={14} />Add Product</span></NavLink>
-              <NavLink className="text-black"  to="/dashboard"><span><FaHome size={14} />Home</span></NavLink>
-              <NavLink className="text-black" onClick={handleSignout}><span><FaSignOutAlt size={14} />Logout</span></NavLink>
+              <NavLink to="/dashboard/category" className="text-black dark:text-[wheat] "  ><span><MdCategory size={14} />Add Category</span></NavLink>
+              <NavLink to="/dashboard/product" className="text-black dark:text-[wheat] "  ><span><MdCategory size={14} />Add Product</span></NavLink>
+              <NavLink className="text-black dark:text-[wheat] "  to="/dashboard"><span><FaHome size={14} />Home</span></NavLink>
+              <NavLink className="text-black dark:text-[wheat] " onClick={handleSignout}><span><FaSignOutAlt size={14} />Logout</span></NavLink>
               
             </ul>
           </div>

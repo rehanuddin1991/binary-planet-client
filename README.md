@@ -1,5 +1,8 @@
 Project Name: Binary Planet Ltd. <br/>
 Live URL: 
+<br/>
+Admin User: admin@gmail.com and Pass: 123456
+User: user@gmail.com  and Pass: 123456 <br/>
  <br />
  Binary Planet: Your One-Stop Shop for Premium Computer Accessories.
  <br />

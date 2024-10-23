@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
- 
+import { useForm } from 'react-hook-form';
 import { backend_uri } from '../../CommonResources';
 import { Helmet } from 'react-helmet-async';
 import { AuthContext } from '../../Provider/AuthProvider';
@@ -10,18 +10,22 @@ const RegisterPage = () => {
   const [error, setError] = useState(null);
   const { createUser } = useContext(AuthContext)
   const navigate = useNavigate();
-  const handleRegister = async    (e) => {
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    defaultValues: {  name: '',email:'',password:'',phone:'',address:'' }
+});
+
+  const handleRegister = async    (form_data) => {
 
 
-      e.preventDefault();
-      setError(null);
-      const form = new FormData(e.currentTarget);
-      const name = form.get("name");
-      const email = form.get("email");
-      const phone = form.get("phone");
-      const address = form.get("address");
-      const password = form.get("password");
-      const image = form.get("image");
+      //e.preventDefault();
+      //setError(null);
+      //const form = new FormData(e.currentTarget);
+      const name = form_data.name;
+      const email = form_data.email;
+      const phone = form_data.phone;
+      const address = form_data.address;
+      const password = form_data.password;
+      const image = form_data.image[0];
       if (password.length < 6) {
         alert("password must be at least 6 characters");
         return null;
@@ -43,10 +47,11 @@ const RegisterPage = () => {
         //const reslt=await createdUser.json();   
         //console.log('created user',reslt);
         toast.success('Successfully Registered!');
-         e.target.name.value="";
-         e.target.email.value="";
-         e.target.password.value="";
+        //  e.target.name.value="";
+        //  e.target.email.value="";
+        //  e.target.password.value="";
            navigate("/");
+          window.location.reload();
       } catch (error) {
         setError(error.message)
       }
@@ -77,13 +82,17 @@ const RegisterPage = () => {
  ssm:w-[20rem] ssm:-ml-3 
       sm:w-[24rem] sm:ml-32  md:w-[24rem] md:ml-40  lg:w-[35rem] lg:ml-35 xl:w-[45rem] xl:px-32  shadow-2xl">
        
-        <form className="card-body" onSubmit={handleRegister}>
+        <form className="card-body"    onSubmit={handleSubmit(handleRegister)} >
           <legend className='text-[indigo] dark:text-[white]   text-xl'>Register Here</legend>
           <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
                 </label>
-                <input type="text" name="name" placeholder="Input Your Name" className="input input-bordered input-info w-full max-w-xs" required />
+                <input type="text"   placeholder="Input Your Name" 
+                className="input input-bordered input-info w-full max-w-xs"  {...register("name", {
+                  required: " Name is Required"
+              })} />
+              <br /> {errors.name && <p className='text-red-500 dark:text-[wheat] text-xs'>{errors.name.message}</p>}
               </div>
 
         
@@ -91,15 +100,37 @@ const RegisterPage = () => {
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
-                <input type="email" name="email" placeholder="Input Your Email" className="input input-bordered input-info w-full max-w-xs" required />
+                <input type="email"  {...register("email", {
+                  required: " Email is Required",
+                  validate:(value)=>
+                    {
+                    if(!value.includes("@"))
+                    {
+                    return "Email must have @ sign";
+                    }
+                     
+                    return true;
+                  }
+              })} placeholder="Input Your Email" className="input input-bordered input-info w-full max-w-xs"   />
+                <br /> {errors.email && <p className='text-red-500 dark:text-[wheat] text-xs'>{errors.email.message}</p>}
               </div>
 
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input type="password" name="password" placeholder="password" required className="input input-bordered
+                <input type="password"  {...register("password", {
+                  required: " Password is Required",
+                  minLength:
+                  {
+                  
+                  value:6,
+                  message: "Password must have at least six characters",
+                  }
+
+              })}  placeholder="password"  className="input input-bordered
                  input-info w-full max-w-xs"  />
+                 <br /> {errors.password && <p className='text-red-500 dark:text-[wheat] text-xs'>{errors.password.message}</p>}
 
               </div>
 
@@ -109,7 +140,28 @@ const RegisterPage = () => {
                 <label className="label">
                   <span className="label-text">Phone</span>
                 </label>
-                <input type="text" name="phone" placeholder="Input Your Phone" className="input input-bordered input-info w-full max-w-xs" required />
+                <input type="text"   placeholder="Input Your Phone" className="input input-bordered input-info 
+                w-full max-w-xs"   {...register("phone", {
+                  required: " Phone is Required"
+                  ,
+                  validate:(value)=>
+                    {
+                    if(value.length<11 )
+                    {
+                    return "Phone No. must have 11 Digits";
+                    }
+                    if(value.length>11)return "Phone No. must have 11 Digits";
+                    // const phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+                    // if(!value.match(phoneno)) {
+                    //   return "input only number"
+                    // }
+                    return true;
+                  },
+                   
+
+                 
+              })} />
+                <br /> {errors.phone && <p className='text-red-500 dark:text-[wheat] text-xs'>{errors.phone.message}</p>}
               </div>
 
 
@@ -117,14 +169,21 @@ const RegisterPage = () => {
                 <label className="label">
                   <span className="label-text">Address</span>
                 </label>
-                <input type="text" name="address" placeholder="Input Your Address" className="input input-bordered input-info w-full max-w-xs" required />
+                <input type="text" name="address" placeholder="Input Your Address" 
+                className="input input-bordered input-info w-full max-w-xs"   {...register("address", {
+                  required: " Address is Required"
+              })} />
+                <br /> {errors.address && <p className='text-red-500 dark:text-[wheat] text-xs'>{errors.address.message}</p>}
               </div>
 
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Image</span>
                 </label>
-                <input type="file" name="image"   className="" required />
+                <input type="file" name="image"   className=""  {...register("image", {
+                  required: " Image is Required"
+              })} />
+                <br /> {errors.image && <p className='text-red-500 dark:text-[wheat] text-xs'>{errors.image.message}</p>}
               </div>
 
 
@@ -134,10 +193,7 @@ const RegisterPage = () => {
 
               <div className="form-control mt-4  ">
                 <input className="mx-auto btn btn-primary w-24 lg:w-40 sm:w-24 md:w-32" type="submit" value="Register" />
-                <br />
-                {
-                  error ? error : ""
-                }
+                
 
               </div>
 

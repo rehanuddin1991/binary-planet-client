@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
- 
+import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../Provider/AuthProvider';
 import { Helmet } from 'react-helmet-async';
@@ -7,17 +7,24 @@ import { Helmet } from 'react-helmet-async';
 const LoginPage = () => {
   const [error,setError]=useState(null);
   const { signInWithGoogle, signIn, signInWithFacebook, signInWithGithub, setUser } = useContext(AuthContext)
-  const navigate = useNavigate()
-  const handleNormalSignIn =async (e) => {
-    e.preventDefault();  
+  const navigate = useNavigate();
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    defaultValues: {  email: '',password:'' }
+});
+  const handleNormalSignIn =async (form_data ) => {
+    //e.preventDefault();  
     //alert(23);
-    const form = new FormData(e.currentTarget);
+    //const form = new FormData(e.currentTarget);
 
-    const email = form.get("email");
-    const password = form.get("password");
-
+    const email = form_data.email;
+    const password = form_data.password;
+     
     try {
-      await signIn(email, password); // Try to log in
+      const userCurr=await signIn(email, password); // Try to log in
+     // console.log('first ccccc',userCurr.user.uid);
+     //localStorage.setItem("uid", userCurr.user.uid);
+
+
       navigate("/dashboard"); // If successful, navigate to dashboard
     } catch (err) {
       setError(err.message); // Set error message if login fails
@@ -82,25 +89,32 @@ const LoginPage = () => {
     <title>Login Page</title>
 
     </Helmet>
-      <div className="hero bg-base-200  ">
+      <div className="hero bg-base-200 mt-14 ">
         <div className="hero-content flex-col lg:flex-row-reverse">
 
-          <div className="card bg-base-100 w-64 md:w-[400px] sm:w-[400px] lg:w-[500px] text-[green]    shadow-2xl">
-            <form className="card-body" onSubmit={handleNormalSignIn}>
+          <div className="card bg-base-100 w-64 md:w-[400px] xs:w-[17rem] xs:-ml-12 sm:w-[400px] lg:w-[500px] text-[green]    shadow-2xl">
+            <form className="card-body" onSubmit={handleSubmit(handleNormalSignIn)}   >
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text font-semibold">Email</span>
                 </label>
-                <input type="email" name="email" placeholder="email" className="input input-bordered input-info w-full max-w-xs" required />
+                <input type="email" {...register("email", {
+                                    required: "Email is Required"
+                                })} placeholder="email" className="input input-bordered input-info w-full max-w-xs"   />
+                <br/> {errors.email && <p className='text-red-500 text-xs'>{errors.email.message}</p>}
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text font-semibold">Password</span>
                 </label>
-                <input type="password" name='password' placeholder="password" className="input input-bordered input-info w-full max-w-xs" required />
+                <input type="password"   placeholder="password" className="input input-bordered 
+                input-info w-full max-w-xs" {...register("password", {
+                  required: "Password is Required"
+              })} />
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                  <a href="#" className="label-text-alt link link-hover font-semibold">Forgot password?</a>
                 </label>
+                <br/> {errors.password && <p className='text-red-500 text-xs'>{errors.password.message}</p>}
               </div>
               <div className="form-control mt-6">
 

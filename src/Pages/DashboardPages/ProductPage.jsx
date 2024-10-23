@@ -3,7 +3,7 @@ import { Link, useLoaderData, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../provider/AuthProvider';
 import toast from 'react-hot-toast'
 import axios from 'axios';
-
+import { useForm } from 'react-hook-form';
 import { backend_uri } from '../../CommonResources';
  
 import ProductShow from '../../Components/Shared/ProductShow';
@@ -12,6 +12,12 @@ import { Helmet } from 'react-helmet-async';
 
 
 const ProductPage = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    defaultValues: {  product_name: '',product_category: '',product_price: '',product_rating: '',
+      product_description: '',product_quantity: '',  }
+});
+  
+
   const all_product_data = useLoaderData();
   const [productData, setproductData] = useState(all_product_data);
   //console.log(productData,30000);
@@ -37,20 +43,20 @@ const ProductPage = () => {
   const [error, setError] = useState(null);
   const { createUser } = useContext(AuthContext)
   const navigate = useNavigate();
-  const handleproductAdd = async (e) => {
+  const handleproductAdd = async (form_data) => {
 
 
-    e.preventDefault();
+    //e.preventDefault();
     setError(null);
-    const form = new FormData(e.currentTarget);
-    const product_name = form.get("product_name");
-    const product_category = form.get("product_category");
+   //const form = new FormData(e.currentTarget);
+    const product_name = form_data.product_name;
+    const product_category = form_data.product_category;
     //console.log(product_category,"cat")
-    const product_price = form.get("product_price");
-    const product_rating = form.get("product_rating");
-    const product_description = form.get("product_description");
-    const product_quantity = form.get("product_quantity");
-    const image = form.get("image");
+    const product_price = form_data.product_price;
+    const product_rating = form_data.product_rating;
+    const product_description = form_data.product_description;
+    const product_quantity = form_data.product_quantity;
+    const image = form_data.image[0];
 
 
     const data = new FormData();
@@ -118,15 +124,19 @@ const ProductPage = () => {
       <div className=" mt-10    dark:text-[white] dark:bg-[#1D232A]         card bg-base-100  xs:w-[17rem] xs:ml-2 ssm:w-[20rem] ssm:ml-5 
       sm:w-[24rem] sm:ml-16   md:w-[24rem] md:ml-35 lg:w-[35rem] lg:ml-35 xl:w-[45rem] xl:px-32  shadow-2xl">
 
-        <form className=" card-body" onSubmit={handleproductAdd}>
+        <form className=" card-body"  onSubmit={handleSubmit(handleproductAdd)}  >
           <legend className='text-[indigo] text-xl dark:text-[whitesmoke]'>Add Product</legend>
 
           <div className="form-control">
             <label className="label">
               <span className="label-text font-semibold dark:text-[wheat]">Product Name</span>
             </label>
-            <input type="text" name="product_name" placeholder="Input Product Name" className="input 
-            input-bordered input-info w-full max-w-xs" required />
+            <input type="text" {...register("product_name", {
+                                    required: "Product Name is Required"
+                                })}   placeholder="Input Product Name" className="input 
+            input-bordered input-info w-full max-w-xs"   />
+
+<br /> {errors.product_name && <p className='text-red-500 dark:text-[wheat] text-xs'>{errors.product_name.message}</p>}
           </div>
 
 
@@ -134,8 +144,12 @@ const ProductPage = () => {
             <label className="label">
               <span className="label-text font-semibold dark:text-[wheat]">Product Description</span>
             </label>
-            <input type="text" name="product_description" placeholder="Input Product Description" className="input 
-            input-bordered input-info w-full max-w-xs" required />
+            <input type="text" {...register("product_description", {
+                                    required: "Description is Required"
+                                })}   placeholder="Input Product Description" className="input 
+            input-bordered input-info w-full max-w-xs"   />
+
+<br /> {errors.product_description && <p className='text-red-500 dark:text-[wheat] text-xs'>{errors.product_description.message}</p>}
           </div>
 
 
@@ -144,8 +158,11 @@ const ProductPage = () => {
             <label className="label">
               <span className="label-text font-semibold dark:text-[wheat]">Product Quantity</span>
             </label>
-            <input type="text" name="product_quantity" placeholder="Product Quantity" className="input 
-            input-bordered input-info w-full max-w-xs" required />
+            <input type="text"  {...register("product_quantity", {
+                                    required: "Quantity is Required"
+                                })} placeholder="Product Quantity" className="input 
+            input-bordered input-info w-full max-w-xs"   />
+            <br /> {errors.product_quantity && <p className='text-red-500 dark:text-[wheat] text-xs'>{errors.product_quantity.message}</p>}
           </div>
 
 
@@ -154,14 +171,19 @@ const ProductPage = () => {
             <label className="label">
               <span className="label-text dark:text-[wheat]">Image</span>
             </label>
-            <input type="file" name="image" className="" required />
+            <input type="file"   className=""  {...register("image", {
+                                    required: "Image is Required"
+                                })} />
+                                <br /> {errors.image && <p className='text-red-500 dark:text-[wheat] text-xs'>{errors.image.message}</p>}
           </div>
 
           <div className="form-control">
             <label className="label">
               <span className="label-text dark:text-[wheat]">Product Category</span>
             </label>
-            <select name="product_category" id="product_category" required className='input input-bordered input-info dropdown-content  w-full
+            <select  {...register("product_category", {
+                                    required: "Category  is Required"
+                                })}  id="product_category"   className='input input-bordered input-info dropdown-content  w-full
              max-w-xs'>
               <option value="0">Select Category</option>
               {
@@ -174,6 +196,7 @@ const ProductPage = () => {
             
               
             </select>
+            <br /> {errors.product_category && <p className='text-red-500 dark:text-[wheat] text-xs'>{errors.product_category.message}</p>}
           </div>
 
 
@@ -183,14 +206,22 @@ const ProductPage = () => {
             <label className="label">
               <span className="label-text font-semibold dark:text-[wheat]">Unit Price</span>
             </label>
-            <input type="text" name="product_price" placeholder="Input Your Product Price" className="input input-bordered input-info w-full max-w-xs" required />
+            <input type="text"   placeholder="Input Your Product Price"
+             className="input input-bordered input-info w-full max-w-xs"  {...register("product_price", {
+              required: "Price is Required"
+          })} />
+            <br /> {errors.product_price && <p className='text-red-500 dark:text-[wheat] text-xs'>{errors.product_price.message}</p>}
           </div>
 
           <div className="form-control">
             <label className="label">
               <span className="label-text font-semibold dark:text-[wheat]">Rating</span>
             </label>
-            <input type="text" name="product_rating" placeholder="Input Your Product Rating" className="input input-bordered input-info w-full max-w-xs" required />
+            <input type="text"  {...register("product_rating", {
+                                    required: "Rating is Required"
+                                })}  placeholder="Input Your Product Rating" 
+                                className="input input-bordered input-info w-full max-w-xs"  />
+            <br /> {errors.product_rating && <p className='text-red-500 dark:text-[wheat] text-xs'>{errors.product_rating.message}</p>}
           </div>
 
 

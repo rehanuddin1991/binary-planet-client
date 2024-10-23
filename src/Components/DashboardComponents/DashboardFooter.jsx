@@ -2,10 +2,10 @@ import React from 'react'
 
 const DashboardFooter = () => {
   return (
-    <footer className="footer dark:bg-[#1a2027] dark:text-[cyan] bg-[darkcyan] xs:text-[0.6rem] 
-    ssm:text-[0.9rem] text-xl lg:text-2xl    text-[floralwhite] items-center p-3">
+    <footer className="footer dark:bg-[#1a2027] dark:text-[white] bg-[darkcyan] xs:text-[0.6rem] 
+    ssm:text-[0.9rem] text-xl lg:text-2xl xs:font-semibold   text-[floralwhite] items-center p-3">
     
-    <nav className="flex items-center justify-betwen gap-4 sm:gap-x-4 md:gap-x-64 lg:gap-x-[51rem]  ">
+    <nav className="flex items-center justify-betwen gap-4 sm:gap-x-4 md:gap-x-44 lg:gap-x-[22rem]  ">
     <aside className=" ">
        
        <p>©Binary Planet Ltd.-All right reserved</p>

@@ -47,7 +47,7 @@ const AuthProvider = ({children}) => {
             photoURL: image || "https://i.ibb.co/k6hTYW1/Alien-Dev.jpg",
             //address: address,
             isAdmin: false, // Default role
-            isBlocked: false // Default status
+            isBlocked: false, // Default status
           }),
         }
       );
@@ -55,7 +55,7 @@ const AuthProvider = ({children}) => {
       if (!response.ok) {
         throw new Error("Failed to register user data.");
       }
-
+      //console.log("return new user ",newUser);
       return newUser;
     } catch (error) {
       console.error("Registration failed:", error.message);
@@ -90,54 +90,30 @@ const AuthProvider = ({children}) => {
         
     }
 
-    // useEffect( () => {
-    //  const unsubscribe=   onAuthStateChanged(auth, async (currentUser)=> {
-    //     if(currentUser)
-    //     {
-    //         try {
-    //           console.log(currentUser," tasnim");
-    //             const res = await fetch(
-    //               `${backend_uri}/user/${currentUser.userId}`
-    //             );
-      
-    //             if (!res.ok) {
-    //               throw new Error("Failed to fetch user data.");
-    //             }
-      
-    //             const data = await res.json();
-    //             setUser(data);
-    //           } catch (error) {
-    //             console.error("Error fetching user data:", error.message);
-    //           }
+    
 
-    //     }
-    //     else{
-    //         setUser(null)
-    //     }
-    //     //console.log(auth.currentUser," reuds");
-    //         //setUser(currentUser)
-    // })
-    // return ( )=> { unsubscribe() }
-    // },[auth.currentUser])
 
+    
 
     // Monitor auth state and fetch user data from backend
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+     
       if (currentUser) {
         try {
-          //console.log("current user ,",currentUser)
-         // console.log(`from auth:  ${backend_uri}/user/${currentUser.uid}`)
           const res = await fetch(
             `${backend_uri}/user/${currentUser.uid}`
           );
-          //console.log(res);
+
           if (!res.ok) {
+            //alert("error");
             throw new Error("Failed to fetch user data.");
           }
 
           const data = await res.json();
+          //console.log('currentset res user no --=====',data )
           setUser(data);
+          //console.log('current user no --=====',user )
         } catch (error) {
           console.error("Error fetching user data:", error.message);
         }
@@ -150,6 +126,9 @@ const AuthProvider = ({children}) => {
       unsubscribe();
     };
   }, [auth]);
+
+
+   
 
     const authInfo={
         user, mySignOut,signIn,signInWithGoogle,setUser,signInWithGithub,signInWithFacebook,

@@ -1,6 +1,7 @@
+import { AuthContext } from '../../provider/AuthProvider';
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { AuthContext } from '../../provider/AuthProvider';
+
 import { MdDashboard, MdSpaceDashboard } from "react-icons/md";
 import logo from '../../assets/logo.png'
 import { RxDashboard } from "react-icons/rx";
@@ -27,7 +28,7 @@ const handleToggle=(e)=>
 
 }
   return (
-    <div className="mt-4 navbar bg-base-100 px-1  dark:text-white">
+    <div className="mt-1 navbar bg-base-100 px-1  dark:text-white">
     <div className=" navbar-start w-[75%] ">
       <div className="dropdown hidden xs:block ssm:block">
         <div tabIndex={0} role="button" className="btn btn-ghost    ">

@@ -11,13 +11,13 @@ import DashboardSidebarContent from '../Components/DashboardComponents/Dashboard
 const DashBoardLayout = () => {
   return (
 
-    <>
+    <div  >
     <div className=''>
       <div className="shadow-md bg-slate-100 ">
         <DashboardHeader />
       </div>
       <div className="block sm:flex bg-white lg:flex md:flex dark:bg-[#1a2027] dark:text-[white] shadow-2xl">
-        <div className="min-w-64 xs:w-80 shadow-md bg-slate-100  ">
+        <div className="min-w-64 xs:w-80 shadow-md dark:bg-[#1a2027]  ">
           <DashboardSidebarContent />
         </div>
         <div className="w-3/4  p-4 py-0 ">
@@ -38,7 +38,7 @@ const DashBoardLayout = () => {
       </div>   
       
       </div> */}
-    </>
+    </div>
   )
 }
 
