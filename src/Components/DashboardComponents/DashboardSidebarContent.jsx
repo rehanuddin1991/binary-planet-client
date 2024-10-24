@@ -70,10 +70,10 @@ const DashboardSidebarContent = () => {
 
             
 
-            {/* <NavLink to="/dashboard/profile" className='flex items-center p-4 hover:text-[orange]   hover:bg-gray-700 cursor-pointer'>
+            <NavLink to={`/dashboard/buy_product/${user?.uid}`} className='flex items-center p-4 hover:text-[orange]   hover:bg-gray-700 cursor-pointer'>
               <FaCog size={24} />
-              <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>Settings</span>
-            </NavLink> */}
+              <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>Purchase History</span>
+            </NavLink>
 
           {user?.isAdmin && (
             <>

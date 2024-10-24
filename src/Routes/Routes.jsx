@@ -23,6 +23,7 @@ import CategoryWiseProducts from "../Pages/MainPages/CategoryWiseProducts";
 import ContactPage from "../Pages/MainPages/ContactPage";
 import AboutPage from "../Pages/MainPages/AboutPage";
 import AllUsersPage from "../Pages/DashboardPages/AllUsersPage";
+import PurchaseHistory from "../Pages/DashboardPages/PurchaseHistory";
 
 const router = createBrowserRouter([
   {
@@ -102,6 +103,12 @@ const router = createBrowserRouter([
         path: "allUsers",
         element: <AllUsersPage />,
         loader: () => fetch(`${backend_uri}/user/`),
+      },
+      {
+        path: "buy_product/:id",
+        element: <PurchaseHistory />,
+        //loader: ({params}) => fetch(`${backend_uri}/buy_product/${params.uid}`),
+        
       },
       {
         path: "profile",

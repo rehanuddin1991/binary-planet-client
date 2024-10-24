@@ -61,13 +61,13 @@ const UserShow = ({all_data,setUserDataFromChild,singleUser}) => {
                             toast.success('Successfully Updated to mongodb!');
                             //fetch updated data
                            // console.log('fetch updated data',`${backend_uri}/user/${id}`)
-                            fetch(`${backend_uri}/user/${id}`)
-                            .then((res)=>res.json())
-                            .then(data=>{
-                              setUserDataFromChild(data);
-                            })
+                            // fetch(`${backend_uri}/user/${id}`)
+                            // .then((res)=>res.json())
+                            // .then(data=>{
+                            //   setUserDataFromChild(data);
+                            // })
                             navigate("/dashboard/allUsers/")}
-                            //window.location.reload();
+                            window.location.reload();
                         })
         }
 
@@ -96,14 +96,14 @@ const UserShow = ({all_data,setUserDataFromChild,singleUser}) => {
                         console.log(data);
                         if (data.modifiedCount) {
                             toast.success('Successfully Updated to mongodb!');
-                            fetch(`${backend_uri}/user/${id}`)
-                            .then((res)=>res.json())
-                            .then(data=>{
-                              setUserDataFromChild(data);
-                            })
+                            // fetch(`${backend_uri}/user/${id}`)
+                            // .then((res)=>res.json())
+                            // .then(data=>{
+                            //   setUserDataFromChild(data);
+                            // })
                            // navigate("/dashboard/allUsers/")
                             navigate("/dashboard/allUsers/")}
-                            //window.location.reload();
+                            window.location.reload();
                         })
         }
        

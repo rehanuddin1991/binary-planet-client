@@ -10,19 +10,19 @@ import UserShow from '../../Components/Shared/UserShow';
 import { AuthContext } from '../../Provider/AuthProvider';
 
 const AllUsersPage = () => {
-    //const all_Users_data=useLoaderData();
- const [usersdata,setUserdata]=useState([]);
+    const all_Users_data=useLoaderData();
+ const [usersdata,setUserdata]=useState(all_Users_data);
  //console.log("loader data after admin blocked",usersdata)  
 
- useEffect(()=>{
-  //console.log("first",`${backend_uri}/user/`)
-  fetch(`${backend_uri}/user/`)
-                            .then((res)=>res.json())
-                            .then(data=>{
-                              setUserdata(data);
-                            })
+//  useEffect(()=>{
+//   //console.log("first",`${backend_uri}/user/`)
+//   fetch(`${backend_uri}/user/`)
+//                             .then((res)=>res.json())
+//                             .then(data=>{
+//                               setUserdata(data);
+//                             })
 
- },[usersdata])
+//  },[usersdata])
    
    
   return (
