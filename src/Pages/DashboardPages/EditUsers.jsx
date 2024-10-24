@@ -29,6 +29,8 @@ const EditUsers = () => {
                     phone: phone,
                     address: address,
                     photoURL:loaderData.photoURL,
+                    isAdmin:loaderData.isAdmin,
+                    isBlocked:loaderData.isBlocked,
                 }
 
                 const inputData = {
@@ -67,7 +69,8 @@ const EditUsers = () => {
                             phone: phone,
                             address: address,
                             photoURL:image_url,
-                            
+                            isAdmin:loaderData.isAdmin,
+                            isBlocked:loaderData.isBlocked,
                              
 
                         }
@@ -120,7 +123,7 @@ const EditUsers = () => {
     }
     return (
         <div className=" mt-10 mx-auto         card bg-base-100  xs:w-[18rem] ssm:w-[22rem]
-    sm:w-[23rem] lg:w-[34rem] md:w-[29rem] shadow-2xl">
+    sm:w-[23rem] lg:w-[34rem] md:w-[22rem] shadow-2xl">
          <Helmet>
     <title>Edit User</title>
 

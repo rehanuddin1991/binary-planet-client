@@ -115,14 +115,19 @@ const LoginPage = () => {
                   <a href="#" className="label-text-alt link link-hover font-semibold">Forgot password?</a>
                 </label>
                 <br/> {errors.password && <p className='text-red-500 text-xs'>{errors.password.message}</p>}
+                <br />
+                <span className='text-[red] text-xs'>
+                {
+                  error? error : ""
+                }
+
+                </span>
+               
               </div>
               <div className="form-control mt-6">
 
                 <input type="submit" value="Login" className="text-[whitesmoke] bg-[darkcyan] font-bold w-32 md:ml-24 btn btn-primary" /> <br />
-                <br />
-                {
-                  error? error : ""
-                }
+                
 
               </div>
             </form>

@@ -29,7 +29,7 @@ const handleToggle=(e)=>
 }
   return (
     <div className="mt-1 navbar bg-base-100 px-1  dark:text-white">
-    <div className=" navbar-start w-[75%] ">
+    <div className=" navbar-start w-[70%] ">
       <div className="dropdown hidden xs:block ssm:block">
         <div tabIndex={0} role="button" className="btn btn-ghost    ">
           <svg
@@ -48,17 +48,20 @@ const handleToggle=(e)=>
         <ul
           tabIndex={0}
           className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-4 text-[darkcyan] dark:text-white font-bold w-52
-           px-4 shadow">
-         <li><NavLink to="/">Home </NavLink> </li>
-         <li><NavLink  to="/allproducts">All Products </NavLink> </li>
+           px-4  py-1 shadow">
+         <NavLink to="/">Home </NavLink> 
+         <NavLink  className="mt-2"  to="/allproducts">All Products </NavLink> 
+         <NavLink   className="mt-2"  to="/contact">Contact </NavLink>  
+         <NavLink  className="mt-2"  to="/about">About </NavLink>  
+        
         </ul>
       </div>
       {/* className="btn btn-ghost  xs:text-[0.9rem] ssm:text-[0.9rem] lg:text-xl md:text-xl sm:text-xl" */}
       <NavLink to="/" ><img src={logo}
        className='w-[16rem] h-20 xs:w-[9rem] xs:h-[4.5rem] ssm:w-[9rem] ssm:h-[4.5rem] ' alt="" /> </NavLink> &nbsp; &nbsp;
     </div>
-    <div className="navbar-center text-3xl font-bold xs:hidden ssm:hidden sm:hidden  md:flex lg:flex ">
-      <ul className="menu menu-horizontal px-3 text-[midnightblue] flex justify-center items-center gap-5">
+    <div className="navbar-center text-2xl font-bold xs:hidden ssm:hidden sm:hidden  md:flex lg:flex ">
+      <ul className="menu menu-horizontal px-1 text-[midnightblue] flex justify-center items-center gap-5">
          <NavLink className="lg:text-[1rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]"  to="/">Home </NavLink>   &nbsp; &nbsp; &nbsp; &nbsp; 
          <NavLink className="lg:text-[1rem] dark:text-white xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]" to="/allproducts">All Products </NavLink>  
          <NavLink className="lg:text-[1rem] dark:text-white xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]" to="/contact">Contact </NavLink>  
@@ -67,7 +70,7 @@ const handleToggle=(e)=>
          
       </ul>
     </div>
-    <div className="navbar-end  w-[25%] flex gap-7 xs:gap-2 ssm:gap-2 justify-center  items-center   ">
+    <div className="navbar-end  w-[30%] flex gap-7 xs:gap-2 ssm:gap-2 justify-center  items-center   ">
       {
          user?   (
           <> 
@@ -82,13 +85,13 @@ const handleToggle=(e)=>
          ) :
          (
           <>
-          <NavLink className="lg:text-[1rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]  xs:py-1 xs:px-1 " to="/login">Login</NavLink>  
-          <NavLink  className=" lg:text-[1rem] xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]  xs:py-1 xs:px-1"  to="/register">Register</NavLink> 
+          <NavLink className="lg:text-[1rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.7rem] font-semibold    " to="/login">Login</NavLink>  
+          <NavLink  className=" lg:text-[1rem] xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.7rem]  font-semibold  "  to="/register">Register </NavLink> 
           </>
         
          )
       }
-        <span >
+        <span className='-ml-6 xs:-ml-1 ssm:-ml-1' >
           <label className="swap swap-rotate">
           {/* this hidden checkbox controls the state */}
           <input type="checkbox" onChange={handleToggle} />

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useLoaderData, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 
@@ -10,9 +10,19 @@ import UserShow from '../../Components/Shared/UserShow';
 import { AuthContext } from '../../Provider/AuthProvider';
 
 const AllUsersPage = () => {
-    const all_Users_data=useLoaderData();
- const [usersdata,setUserdata]=useState(all_Users_data);
- //console.log(23,usersdata)  
+    //const all_Users_data=useLoaderData();
+ const [usersdata,setUserdata]=useState([]);
+ //console.log("loader data after admin blocked",usersdata)  
+
+ useEffect(()=>{
+  //console.log("first",`${backend_uri}/user/`)
+  fetch(`${backend_uri}/user/`)
+                            .then((res)=>res.json())
+                            .then(data=>{
+                              setUserdata(data);
+                            })
+
+ },[usersdata])
    
    
   return (
@@ -31,16 +41,19 @@ const AllUsersPage = () => {
         
 
       <div   className=" 
-                      bg-[darkcyan] text-[aliceblue]">
-          <table className="table " border="1">
+                      bg-[darkcyan] text-[white] mt-3 mb-3 dark:bg-[#343d46]
+     dark:text-[white]">
+          <table className="table  " border="1">
             {/* head */}
             <thead className='text-[white] text-left'>
-              <tr className='grid grid-cols-4 overflow-auto whitespace-normal 	 '>
-                <th style={{ wordWrap:"break-word", wordBreak:"break-word"}} className="	   border border-white">Name</th>
-                <th style={{ wordWrap:"break-word", wordBreak:"break-word"}} className="	   border border-white">Email</th>
+              <tr className='grid grid-cols-5 overflow-auto whitespace-normal 	 '>
+                <th style={{ wordWrap:"break-word", wordBreak:"break-word"}} className="	text-[wheat]  border border-white">Name</th>
+                <th style={{ wordWrap:"break-word", wordBreak:"break-word"}} className="	text-[wheat]   border border-white">Email</th>
+                <th style={{ wordWrap:"break-word", wordBreak:"break-word"}} className="text-[wheat]	   border border-white">Role</th>
+                <th style={{ wordWrap:"break-word", wordBreak:"break-word"}} className="text-[wheat]	   border border-white">Status</th>
                  
-                <th style={{ wordWrap:"break-word", wordBreak:"break-word"}} className=" 	 border border-white"  > Action</th>
-                <th style={{ wordWrap:"break-word", wordBreak:"break-word"}} className=" 	 border border-white"  > Action</th>
+                <th style={{ wordWrap:"break-word", wordBreak:"break-word"}} className="text-[wheat] 	 border border-white"  > Action</th>
+                
 
 
               </tr>
@@ -50,7 +63,7 @@ const AllUsersPage = () => {
               {
                 usersdata.map((user) => {
 
-                  return (<UserShow key={user._id} all_data={usersdata}  setUserData={setUserdata} singleUser={user}   
+                  return (<UserShow key={user._id} all_data={usersdata}  setUserDataFromChild={setUserdata} singleUser={user}   
                       ></UserShow>)
                 })
               }

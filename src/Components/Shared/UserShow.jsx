@@ -4,8 +4,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBin6Line } from "react-icons/ri";
-
-const UserShow = ({all_data,setUserData,singleUser}) => {
+import { FaEdit, FaUserShield } from "react-icons/fa";
+import { ImBlocked } from "react-icons/im";
+const UserShow = ({all_data,setUserDataFromChild,singleUser}) => {
 
     const navigate=useNavigate();
      const [newList,setNewList]=useState([]);
@@ -20,7 +21,7 @@ const UserShow = ({all_data,setUserData,singleUser}) => {
               toast.success('Successfully deleted from mongodb!')
               const remainingUser=all_data.filter((item)=>item.uid!==id )
               //console.log(remainingUser,);
-              setUserData(remainingUser);
+              setUserDataFromChild(remainingUser);
               navigate("/dashboard/allUsers")
               
             }
@@ -31,22 +32,101 @@ const UserShow = ({all_data,setUserData,singleUser}) => {
     
           )
       }
+
+      
+
+      const handleToggleBlocked=(singleUser)=>
+        {
+          const id=singleUser.uid;
+          console.log('firfrerst',singleUser);
+          const inputObj = {
+            ...singleUser,
+            isAdmin: singleUser.isAdmin,
+            isBlocked:!singleUser.isBlocked,
+             
+        }
+       // console.log('input obj',inputObj)
+
+        const inputData = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(inputObj)
+        };
+
+        fetch(`${backend_uri}/user/${id}`, inputData)
+                    .then(response => response.json())
+                    .then((data) => {
+                        console.log(data);
+                        if (data.modifiedCount) {
+                            toast.success('Successfully Updated to mongodb!');
+                            //fetch updated data
+                           // console.log('fetch updated data',`${backend_uri}/user/${id}`)
+                            fetch(`${backend_uri}/user/${id}`)
+                            .then((res)=>res.json())
+                            .then(data=>{
+                              setUserDataFromChild(data);
+                            })
+                            navigate("/dashboard/allUsers/")}
+                            //window.location.reload();
+                        })
+        }
+
+
+      const handleToggleAdmin=(singleUser)=>
+        {
+          const id=singleUser.uid;
+          console.log('first',singleUser);
+          const inputObj = {
+            ...singleUser,
+            isAdmin: !singleUser.isAdmin,
+            isBlocked:singleUser.isBlocked,
+             
+        }
+       // console.log('input obj',inputObj)
+
+        const inputData = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(inputObj)
+        };
+
+        fetch(`${backend_uri}/user/${id}`, inputData)
+                    .then(response => response.json())
+                    .then((data) => {
+                        console.log(data);
+                        if (data.modifiedCount) {
+                            toast.success('Successfully Updated to mongodb!');
+                            fetch(`${backend_uri}/user/${id}`)
+                            .then((res)=>res.json())
+                            .then(data=>{
+                              setUserDataFromChild(data);
+                            })
+                           // navigate("/dashboard/allUsers/")
+                            navigate("/dashboard/allUsers/")}
+                            //window.location.reload();
+                        })
+        }
        
      return (
        
          
-         <tr className='grid grid-cols-4' >
+         <tr className='grid grid-cols-5' >
            
             
            
            <td style={{ wordWrap:"break-word", wordBreak:"break-word"}}  className="border border-white">{singleUser.displayName}</td>
            <td style={{ wordWrap:"break-word", wordBreak:"break-word"}}  className="border border-white">{singleUser.email}</td>
+           <td style={{ wordWrap:"break-word", wordBreak:"break-word"}}  className="border border-white">{singleUser.isAdmin? "Admin":"User"}</td>
+           <td style={{ wordWrap:"break-word", wordBreak:"break-word"}}  className="border border-white">{singleUser.isBlocked? "in-active":"Active"}</td>
           
-           <td style={{ wordWrap:"break-word", wordBreak:"break-word"}}  className="border border-white">
-           <Link to={`/dashboard/user_edit/${singleUser.uid}`} ><FaRegEdit /></Link>  
+           <td style={{ wordWrap:"break-word", wordBreak:"break-word"}}  className="border border-white 
+           grid grid-cols-2 xs:grid-cols-1 justify-start items-center gap-2  ">
+           <Link title="Edit" to={`/dashboard/user_edit/${singleUser.uid}`} ><FaEdit   /></Link>  
+           <button title="Delete" onClick={()=>handleDelete(singleUser.uid)}><RiDeleteBin6Line/></button>
+           <button title="Toggle Admin" onClick={()=>handleToggleAdmin(singleUser)}><FaUserShield/></button>
+           <button title="Toggle Block" onClick={()=>handleToggleBlocked(singleUser)}><ImBlocked/></button>
              </td>
-           <td style={{ wordWrap:"break-word", wordBreak:"break-word"}}  className="border border-white">  
-             <button onClick={()=>handleDelete(singleUser.uid)}><RiDeleteBin6Line/></button> </td>
+            
            
          </tr>
         

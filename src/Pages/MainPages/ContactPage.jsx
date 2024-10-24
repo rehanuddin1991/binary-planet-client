@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async'
 
 const ContactPage = () => {
   return (
-    <div className='mt-14 p-12 dark:bg-[#1e2730] dark:text-[white]  text-3xl  flex items-center justify-center font-semibold '>
+    <div className='mt-14 p-12 dark:bg-[#1e2730] dark:text-[white]  text-3xl xs:text-xl ssm:text-xl flex items-center justify-center font-semibold '>
       <Helmet>
     <title>Contact Us</title>
 

@@ -1,2 +1,2 @@
-//export const backend_uri="http://localhost:5000";
-export const backend_uri="https://binary-planet-backend.onrender.com";
+export const backend_uri="http://localhost:5000";
+//export const backend_uri="https://binary-planet-backend.onrender.com";
