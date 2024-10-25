@@ -130,7 +130,10 @@ const DashboardSidebarContent = () => {
               className="ml-3 menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-3 space-y-2 shadow">
               <NavLink className="text-black dark:text-[wheat]  " to="/dashboard"><span><FaHome size={14} />Home</span></NavLink>
               <NavLink className="text-black dark:text-[wheat] " to="/dashboard"><span><FaUserAlt size={14} />Profile</span></NavLink>
+              <NavLink  to={`/dashboard/buy_product/${user?.uid}`}  className="text-black dark:text-[wheat] " to="/dashboard"><span><FaUserAlt size={14} />Purchase History</span></NavLink>
                
+
+             
             {user?.isAdmin &&
             <>
             

@@ -191,7 +191,7 @@ const RegisterPage = () => {
 
              
 
-              <div className="form-control mt-4  ">
+              <div className="form-control mt-2  ">
                 <input className="mx-auto btn btn-primary w-24 lg:w-40 sm:w-24 md:w-32" type="submit" value="Register" />
                 
 
@@ -199,7 +199,9 @@ const RegisterPage = () => {
 
               <div className="form-control ">
                 <label className="label">
-                  <span className="label-text text-center ">Already have an account?<Link to="/login"> <button className="btn btn-info w-14 lg:w-40 sm:w-24 md:w-32  ">Login</button>
+                  <span className="label-text text-center ">Already have an account?<Link to="/login"> <br />
+                  <button className="btn btn-info w-14 xs:w-28 xs:ml-6 ssm:w-28 ssm:ml-16 mt-1  
+                  sm:ml-24 md:ml-40 sm:w-32 md:w-32 lg:w-40 lg:ml-28 ">Login</button>
                   </Link></span>
                 </label>
                 

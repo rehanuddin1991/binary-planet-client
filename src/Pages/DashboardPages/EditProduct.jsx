@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { backend_uri } from '../../CommonResources';
 import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 const EditProduct = () => {
     const [error, setError] = useState(null);
     const loaderData = useLoaderData();
@@ -13,7 +14,30 @@ const EditProduct = () => {
           product_description: loaderData.productDescription,product_quantity: loaderData.productQuantity  }
     });
     const navigate = useNavigate();
-     
+
+
+    const [options, setOptions] = useState([]);
+  const [selectedOption, setSelectedOption] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${backend_uri}/category`)// replace with your API endpoint
+        setOptions(response.data);
+        //console.log('first',response.data)
+        // Preselect the first option or any specific logic
+        if(loaderData.productCategory)
+        setSelectedOption(loaderData.productCategory );
+        else setSelectedOption(null);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+    //console.log('selceted',selectedOption)
+  
     const handleproductUpdate = async (form_data) => {
         //e.preventDefault();
         setError(null);
@@ -23,6 +47,7 @@ const EditProduct = () => {
         const product_rating = form_data.product_rating;
         const product_price = form_data.product_price;
         const product_quantity = form_data.product_quantity;
+        const product_category = form_data.product_category;
         const image = form_data.image[0];
 
         if( document.getElementById("image").files.length == 0 ){
@@ -34,9 +59,10 @@ const EditProduct = () => {
                     productRating: product_rating,
                     productPrice: product_price, 
                     productQuantity: product_quantity, 
+                    productCategory: product_category, 
                     imageURL:loaderData.imageURL,
                 }
-                console.log(23333,inputObj)
+               // console.log(23333,inputObj)
                 const inputData = {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
@@ -73,6 +99,7 @@ const EditProduct = () => {
                             productRating: product_rating,
                             productPrice: product_price, 
                             productQuantity: product_quantity,
+                            productCategory: product_category,
                             imageURL: image_url,
 
                         }
@@ -176,10 +203,33 @@ const EditProduct = () => {
                         <span className="label-text dark:text-[wheat]">Image</span>
                     </label>
                     <input type="file" id='image'  {...register("image", {
-                                    required: "Image is Required"
+                                    required:false
                                 })} className=""  />
                     <br /> {errors.image && <p className='text-red-500 dark:text-[wheat] text-xs'>{errors.image.message}</p>}
                 </div>
+
+
+                <div className="form-control">
+            <label className="label">
+              <span className="label-text dark:text-[wheat]">Product Category</span>
+            </label>
+            <select value={selectedOption}      {...register("product_category", {
+                                    required: "Category  is Required"
+                                })}  id="product_category"   className='input input-bordered input-info dropdown-content  w-full
+             max-w-xs'>
+              <option value="0">Select Category</option>
+               
+      {options.map((option) => (
+        <option key={option._id} value={option._id}>
+          {option.categoryName}
+        </option>
+      ))}
+    
+            
+              
+            </select>
+            <br /> {errors.product_category && <p className='text-red-500 dark:text-[wheat] text-xs'>{errors.product_category.message}</p>}
+          </div>
 
                 <div className="form-control">
             <label className="label">

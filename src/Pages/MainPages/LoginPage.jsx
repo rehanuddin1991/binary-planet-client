@@ -89,10 +89,11 @@ const LoginPage = () => {
     <title>Login Page</title>
 
     </Helmet>
-      <div className="hero bg-base-200 mt-14 ">
+      <div className="hero bg-base-200 mt-6 ">
         <div className="hero-content flex-col lg:flex-row-reverse">
 
-          <div className="card bg-base-100 w-64 md:w-[400px] xs:w-[17rem] xs:-ml-12 sm:w-[400px] lg:w-[500px] text-[green]    shadow-2xl">
+          <div className="card bg-base-100 w-96 md:w-[400px] xs:w-[17rem] 
+           xs:-ml-12 sm:w-[400px] lg:w-[30rem] text-[green] ssm:w-[20rem] ssm:-ml-4  shadow-2xl">
             <form className="card-body" onSubmit={handleSubmit(handleNormalSignIn)}   >
               <div className="form-control">
                 <label className="label">
@@ -124,7 +125,7 @@ const LoginPage = () => {
                 </span>
                
               </div>
-              <div className="form-control mt-6">
+              <div className="form-control ">
 
                 <input type="submit" value="Login" className="text-[whitesmoke] bg-[darkcyan] font-bold w-32 md:ml-24 btn btn-primary" /> <br />
                 
