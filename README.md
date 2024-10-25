@@ -1,5 +1,12 @@
 Project Name: Binary Planet Ltd. <br/>
-Live URL: 
+Site Live URL: https://binary-planet.netlify.app/ <br/>
+Site GitHUB Link: https://github.com/rehanuddin1991/binary-planet-client.git <br/>
+
+ 
+Backend Live URL: https://binary-planet.onrender.com/user 
+<br/>
+Backend GitHUB URL: https://github.com/rehanuddin1991/binary-planet-backend.git <br/>
+Please wait some moments for smooth rendering . 
 <br/>
 Admin User: admin@gmail.com and Pass: 123456
 User: user@gmail.com  and Pass: 123456 <br/>
@@ -13,7 +20,7 @@ Here I have used
 1.React Js <br />
 2.Tailwind Css <br />
 3.Daisy UI <br />
-4.Javascript <br />
+4.Javascript ES6<br />
 5.React Icon, Router DOM, Helmet <br />
 6.Firebase Authentication <br />
 7.MongoDB <br />
