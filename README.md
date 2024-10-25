@@ -2,8 +2,8 @@ Project Name: Binary Planet Ltd. <br/>
 Site Live URL: https://binary-planet.netlify.app/ <br/>
 Site GitHUB Link: https://github.com/rehanuddin1991/binary-planet-client.git <br/>
 
- 
-Backend Live URL: https://binary-planet.onrender.com/user 
+Backend Live URL: https://binary-planet-server.vercel.app/  <br/>
+===optional:     Backend Live URL: https://binary-planet.onrender.com/user 
 <br/>
 Backend GitHUB URL: https://github.com/rehanuddin1991/binary-planet-backend.git <br/>
 Please wait some moments for smooth rendering . 
