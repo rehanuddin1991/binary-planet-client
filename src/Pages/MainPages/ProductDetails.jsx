@@ -9,6 +9,7 @@ const ProductDetails = () => {
     const loaderData = useLoaderData();
     const navigate=useNavigate();
     const {user}=useContext(AuthContext);
+    //console.log('aa',user)
     const [error,setError]=useState(null);
     const handleProductPurchase = async    (e) => {
 
@@ -16,6 +17,8 @@ const ProductDetails = () => {
         setError(null);
         const form = new FormData(e.currentTarget);
         const product_name = form.get("product_name");       
+        const product_quantity = form.get("product_quantity");       
+        const product_delivery_address = form.get("product_delivery_address");       
         const product_id = form.get("product_id");       
         const user_id = form.get("user_id");      
         
@@ -27,6 +30,8 @@ const ProductDetails = () => {
         try {
           const inputObj={
               productName:loaderData.productName,
+              productQuantity:product_quantity,
+              productDeliveryAddress:product_delivery_address,
               productPrice:loaderData.productPrice,
               productRating:loaderData.productRating,
               imageURL:loaderData.imageURL,
@@ -44,7 +49,7 @@ const ProductDetails = () => {
               .then(response => response.json())
               .then((data)=>{
                   if(data.insertedId){
-                      toast.success('Information Saved Successfully!');
+                      toast.success('Purchased Successfully!');
                        
                       navigate("/allproducts") 
            
@@ -67,19 +72,19 @@ const ProductDetails = () => {
       }
 
     return (
-        <>
+        <div className='dark:bg-[#1D232A] dark:text-[white]'>
         <Helmet>
     <title>Product Details</title>
 
     </Helmet>
-            <div className="mt-8 card bg-base-100 
+            <div className="mt-8 xs:w-[18rem] xs:-ml-11 card bg-base-100 dark:bg-[#1D232A] dark:text-[white]
              shadow-xl"><br /> <br />
                 <figure>
-                    <img className='rounded-md '
+                    <img className='rounded '
                         src={loaderData?.imageURL}
                         alt="Shoes" />
                 </figure>
-                <div className="card-body text-center text-xl font-semibold text-[midnightblue]">
+                <div className="card-body text-center text-xl font-semibold text-[midnightblue] dark:text-[white]">
                     <p>
                     Product Name: {loaderData?.productName}
                         
@@ -115,7 +120,7 @@ const ProductDetails = () => {
       sm:w-[24rem] sm:ml-16   md:w-[24rem] md:ml-35  lg:w-[24rem] lg:ml-35  xl:w-[24rem] xl:ml-35  shadow-2xl">
 
         <form className=" card-body" onSubmit={handleProductPurchase}>
-          <legend className='text-[indigo] text-xl'>Buy Product &nbsp;&nbsp;  
+          <legend className='text-[indigo]  dark:text-[white] text-xl'>Buy Product &nbsp;&nbsp;  
              </legend>
           <div className="form-control mt-4  ">
            
@@ -138,6 +143,15 @@ const ProductDetails = () => {
             </label>
             <input defaultValue={user?.email} readOnly type="text" name="customer_email"   className="input 
             input-bordered input-info w-full max-w-xs" required />
+             
+          </div>
+
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Customer Phone</span>
+            </label>
+            <input readOnly defaultValue={user?.phone}   type="text" name="customer_phone"   className="input 
+            input-bordered input-info w-full max-w-xs"   />
              
           </div>
 
@@ -179,6 +193,24 @@ const ProductDetails = () => {
           </div>
 
 
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Quantity</span>
+            </label>
+            <input    type="text" name="product_quantity"
+             placeholder="Product Quantity" className="input input-bordered input-info w-full max-w-xs" required />
+          </div>
+
+
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Delivery Address</span>
+            </label>
+            <input    type="text" name="product_delivery_address"
+             placeholder="Product delivery address" className="input input-bordered input-info w-full max-w-xs" required />
+          </div>
+
+
 
 
 
@@ -212,7 +244,7 @@ const ProductDetails = () => {
       </div>
   </div>
 </dialog>
-        </>
+        </div>
     )
 }
 

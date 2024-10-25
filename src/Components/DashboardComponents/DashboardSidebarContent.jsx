@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { IoCloseSharp } from "react-icons/io5";
 import { FaHome, FaUserAlt, FaCog, FaSignOutAlt, FaBars, FaUsers } from 'react-icons/fa'
- 
+
 import { NavLink, useNavigate } from 'react-router-dom';
-import { MdCategory } from "react-icons/md";
+import { MdCategory,MdMessage } from "react-icons/md";
 import { signOut } from 'firebase/auth';
 import { AuthContext } from '../../provider/AuthProvider';
 
@@ -58,7 +58,7 @@ const DashboardSidebarContent = () => {
             </NavLink  >
 
 
-            
+
 
 
             <NavLink to="/dashboard/profile" className='flex items-center p-4 hover:text-[orange]   hover:bg-gray-700 cursor-pointer'>
@@ -66,36 +66,47 @@ const DashboardSidebarContent = () => {
               <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>Profile</span>
             </NavLink>
 
-           
 
-            
 
-            <NavLink to={`/dashboard/buy_product/${user?.uid}`} className='flex items-center p-4 hover:text-[orange]   hover:bg-gray-700 cursor-pointer'>
+
+
+
+            <NavLink to={`/dashboard/buy_product/${user?.uid}`} className='flex items-center p-4 hover:text-[orange]  
+             hover:bg-gray-700 cursor-pointer'>
               <FaCog size={24} />
               <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>Purchase History</span>
             </NavLink>
 
-          {user?.isAdmin && (
-            <>
-             <NavLink to="/dashboard/allUsers" className='flex items-center p-4 hover:text-[orange]   hover:bg-gray-700 cursor-pointer'>
-              <FaUsers size={24} />
-              <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>All Users</span>
+            <NavLink to="/dashboard/messages" className='flex items-center p-4 hover:text-[orange]  
+             hover:bg-gray-700 cursor-pointer'>
+              <span><MdMessage size={20}/></span>
+              
+              <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>Message</span>
             </NavLink>
 
-             <NavLink to="/dashboard/category" className='flex items-center p-4  hover:bg-gray-700 hover:text-[orange]  cursor-pointer'>
-              <MdCategory size={24} />
-              <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>Add Category  </span>
-            </NavLink>
 
-            <NavLink to="/dashboard/product" className='flex items-center p-4  hover:bg-gray-700 hover:text-[orange]  cursor-pointer'>
-              <MdCategory size={24} />
-              <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>Add Product  </span>
-            </NavLink>
-            </>
 
-            
-          )}
-           
+            {user?.isAdmin && (
+              <>
+                <NavLink to="/dashboard/allUsers" className='flex items-center p-4 hover:text-[orange]   hover:bg-gray-700 cursor-pointer'>
+                  <FaUsers size={24} />
+                  <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>All Users</span>
+                </NavLink>
+
+                <NavLink to="/dashboard/category" className='flex items-center p-4  hover:bg-gray-700 hover:text-[orange]  cursor-pointer'>
+                  <MdCategory size={24} />
+                  <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>Add Category  </span>
+                </NavLink>
+
+                <NavLink to="/dashboard/product" className='flex items-center p-4  hover:bg-gray-700 hover:text-[orange]  cursor-pointer'>
+                  <MdCategory size={24} />
+                  <span className={`ml-4   md:block ${isOpen ? "block" : "hidden"} `}>Add Product  </span>
+                </NavLink>
+              </>
+
+
+            )}
+
 
 
             <NavLink onClick={handleSignout} className='flex text-[white] items-center p-4  hover:bg-gray-700 hover:text-[orange]  cursor-pointer'>
@@ -128,29 +139,35 @@ const DashboardSidebarContent = () => {
             <ul
               tabIndex={0}
               className="ml-3 menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-3 space-y-2 shadow">
-              <NavLink className="text-black dark:text-[wheat]  " to="/dashboard"><span><FaHome size={14} />Home</span></NavLink>
-              <NavLink className="text-black dark:text-[wheat] " to="/dashboard"><span><FaUserAlt size={14} />Profile</span></NavLink>
-              <NavLink  to={`/dashboard/buy_product/${user?.uid}`}  className="text-black dark:text-[wheat] " to="/dashboard"><span><FaUserAlt size={14} />Purchase History</span></NavLink>
-               
+              <NavLink className="text-black dark:text-[wheat] hover:text-orange-400 " to="/dashboard"><span><FaHome size={14} />Home</span></NavLink>
+              <NavLink className="text-black dark:text-[wheat] hover:text-orange-400  " to="/dashboard"><span><FaUserAlt size={14} />Profile</span></NavLink>
+              <NavLink to={`/dashboard/buy_product/${user?.uid}`} className="hover:text-orange-400  text-black dark:text-[wheat] "
+              ><span><FaUserAlt size={14} />Purchase History</span></NavLink>
 
-             
-            {user?.isAdmin &&
-            <>
-            
-              <NavLink to="/dashboard/allUsers"  className="text-black dark:text-[wheat] "  >
-              
-              <span><FaUsers size={24} />All Users</span>
-            </NavLink>
-            <NavLink to="/dashboard/category" className="text-black dark:text-[wheat] "  ><span><MdCategory size={14} />Add Category</span></NavLink>
-              <NavLink to="/dashboard/product" className="text-black dark:text-[wheat] "  ><span><MdCategory size={14} />Add Product</span></NavLink>
-               
-            
-            </>
+              <NavLink to="/dashboard/messages" className="hover:text-orange-400  text-black dark:text-[wheat] "
+              ><span>  <MdMessage/> Message</span></NavLink>
 
-            }
-             
+
+
+
+
+              {user?.isAdmin &&
+                <>
+
+                  <NavLink to="/dashboard/allUsers" className="text-black dark:text-[wheat] "  >
+
+                    <span><FaUsers size={24} />All Users</span>
+                  </NavLink>
+                  <NavLink to="/dashboard/category" className="text-black dark:text-[wheat] "  ><span><MdCategory size={14} />Add Category</span></NavLink>
+                  <NavLink to="/dashboard/product" className="text-black dark:text-[wheat] "  ><span><MdCategory size={14} />Add Product</span></NavLink>
+
+
+                </>
+
+              }
+
               <NavLink className="text-black dark:text-[wheat] " onClick={handleSignout}><span><FaSignOutAlt size={14} />Logout</span></NavLink>
-              
+
             </ul>
           </div>
         </div>

@@ -2,9 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import PrivateRoute from "./PrivateRoutes";
 
 import Profile from "../pages/dashboardPages/Profile";
-import Messages from "../pages/dashboardPages/Messages";
-import CreateMessage from "../pages/dashboardPages/CreateMessages";
-import MessageDetails from "../pages/dashboardPages/MessageDetails";
+
+ 
 import MainLayout from "../Layout/MainLayout";
 import HomePage from "../Pages/MainPages/HomePage";
 import LoginPage from "../Pages/MainPages/LoginPage";
@@ -24,6 +23,7 @@ import ContactPage from "../Pages/MainPages/ContactPage";
 import AboutPage from "../Pages/MainPages/AboutPage";
 import AllUsersPage from "../Pages/DashboardPages/AllUsersPage";
 import PurchaseHistory from "../Pages/DashboardPages/PurchaseHistory";
+import Messages from "../Pages/DashboardPages/Messages";
 
 const router = createBrowserRouter([
   {
@@ -132,14 +132,8 @@ const router = createBrowserRouter([
         element: <ProductPage />,
         loader: () => fetch(`${backend_uri}/product`),
       },
-      {
-        path: "messages/:id",
-        element: <MessageDetails />,
-      },
-      {
-        path: "createMessage",
-        element: <CreateMessage />,
-      },
+      
+      
       {
         path: "category_edit/:id",     
         element: <EditCategory/>,

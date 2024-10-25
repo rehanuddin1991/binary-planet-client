@@ -47,9 +47,9 @@ const handleToggle=(e)=>
         </div>
         <ul
           tabIndex={0}
-          className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-4 text-[darkcyan] dark:text-white font-bold w-52
+          className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-4 text-[darkcyan] dark:text-[white] font-bold w-52
            px-4  py-1 shadow">
-         <NavLink to="/">Home </NavLink> 
+         <NavLink className='dark:text-[white]' to="/">Home </NavLink> 
          <NavLink  className="mt-2"  to="/allproducts">All Products </NavLink> 
          <NavLink   className="mt-2"  to="/contact">Contact </NavLink>  
          <NavLink  className="mt-2"  to="/about">About </NavLink>  
@@ -61,11 +61,12 @@ const handleToggle=(e)=>
        className='w-[16rem] h-20 xs:w-[9rem] xs:h-[4.5rem] ssm:w-[9rem] ssm:h-[4.5rem] ' alt="" /> </NavLink> &nbsp; &nbsp;
     </div>
     <div className="navbar-center text-2xl font-bold xs:hidden ssm:hidden sm:hidden  md:flex lg:flex ">
-      <ul className="menu menu-horizontal px-1 text-[midnightblue] flex justify-center items-center gap-5">
-         <NavLink className="lg:text-[1rem]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]"  to="/">Home </NavLink>   &nbsp; &nbsp; &nbsp; &nbsp; 
-         <NavLink className="lg:text-[1rem] dark:text-white xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]" to="/allproducts">All Products </NavLink>  
-         <NavLink className="lg:text-[1rem] dark:text-white xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]" to="/contact">Contact </NavLink>  
-         <NavLink className="lg:text-[1rem] dark:text-white xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]" to="/about">About </NavLink>  
+      <ul className="menu menu-horizontal px-1 text-[midnightblue] dark:text-[wheat] flex justify-center items-center gap-5">
+
+         <NavLink className="lg:text-[1rem] dark:hover:text-orange-500 dark:text-[wheat]   xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]"  to="/">Homes </NavLink>    
+         <NavLink className="lg:text-[1rem] dark:hover:text-orange-500 dark:text-[wheat]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]" to="/allproducts">All Products </NavLink>  
+         <NavLink className="lg:text-[1rem] dark:hover:text-orange-500 dark:text-[wheat]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]" to="/contact">Contact </NavLink>  
+         <NavLink className="lg:text-[1rem] dark:hover:text-orange-500 dark:text-[wheat]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]" to="/about">About </NavLink>  
         
          
       </ul>
@@ -91,7 +92,7 @@ const handleToggle=(e)=>
         
          )
       }
-        <span className='-ml-6 xs:-ml-1 ssm:-ml-1' >
+        <span className='-ml-6 xs:-ml-1 ssm:-ml-1 lg:px-2' >
           <label className="swap swap-rotate">
           {/* this hidden checkbox controls the state */}
           <input type="checkbox" onChange={handleToggle} />

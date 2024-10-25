@@ -220,8 +220,8 @@ const EditProduct = () => {
               <option value="0">Select Category</option>
                
       {options.map((option) => (
-        <option key={option._id} value={option._id}>
-          {option.categoryName}
+        <option key={option?._id} value={option?._id}>
+          {option?.categoryName}
         </option>
       ))}
     

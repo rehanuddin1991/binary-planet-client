@@ -68,7 +68,7 @@ const Profile = () => {
        {/* Edit Button with React Icon */}
        {!user?.isBlocked ? (
         <button
-          className="absolute top-4 right-4 text-gray-500 hover:text-blue-600 transition-transform transform hover:scale-105"
+          className="absolute top-4 right-4 text-gray-500 dark:text-[wheat] hover:text-blue-600 transition-transform transform hover:scale-105"
           // onClick={handleOpenEditModal}
         > <Link to={`/dashboard/user_edit/${user?.uid}`} > <FiEdit size={24} /></Link> 
          

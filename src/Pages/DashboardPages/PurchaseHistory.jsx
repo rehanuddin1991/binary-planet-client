@@ -20,7 +20,7 @@ const PurchaseHistory = () => {
       fetch(`${backend_uri}/buy_product/`)
       .then((res)=>res.json())
       .then(data=>{
-      const data_up=  data.filter((item)=>{    return item.uid===id});
+      const data_up=  data.filter((item)=>{     return item.uid===id});
      
       setProducts(data_up)
       })
@@ -38,14 +38,14 @@ const PurchaseHistory = () => {
     <div className='mt-4 text-center font-semibold'> User's Purchase History </div>
         <div className=' dark:text-[white] dark:bg-[#1D232A] mt-8   grid grid-cols-1 gap-4 
         justify-around items-center 
-         sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2   sm:ml-10  '> 
+         sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 lg:ml-40   sm:ml-10  '> 
           
          
 {
              
             products.length>0 && ( 
             products.map((item,index)=>{
-              //setPayment(payment + item.productPrice)
+              //setPayment(payment + 10)
               return <SingleBuyProduct  key={item._id} props={item}></SingleBuyProduct>
                 
             })

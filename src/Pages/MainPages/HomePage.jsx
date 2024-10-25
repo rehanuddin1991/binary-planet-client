@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet-async'
 import FAQsection from '../../Components/Shared/FAQsection'
 import UserReviewSection from '../../Components/Shared/UserReviewSection'
 import FeaturedProducts from '../../Components/Shared/FeaturedProducts'
+import MessageShow from '../../Components/Shared/MessageShow'
 
 const HomePage = () => {
   return (
@@ -18,6 +19,7 @@ const HomePage = () => {
    <FeaturedProducts></FeaturedProducts>
    <FAQsection></FAQsection>
   <UserReviewSection></UserReviewSection> 
+  <MessageShow/>
    
     </div>
   )
