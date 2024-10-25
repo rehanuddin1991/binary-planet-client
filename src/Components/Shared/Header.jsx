@@ -63,7 +63,7 @@ const handleToggle=(e)=>
     <div className="navbar-center text-2xl font-bold xs:hidden ssm:hidden sm:hidden  md:flex lg:flex ">
       <ul className="menu menu-horizontal px-1 text-[midnightblue] dark:text-[wheat] flex justify-center items-center gap-5">
 
-         <NavLink className="lg:text-[1rem] dark:hover:text-orange-500 dark:text-[wheat]   xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]"  to="/">Homes </NavLink>    
+         <NavLink className="lg:text-[1rem] dark:hover:text-orange-500 dark:text-[wheat]   xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]"  to="/">Home </NavLink>    
          <NavLink className="lg:text-[1rem] dark:hover:text-orange-500 dark:text-[wheat]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]" to="/allproducts">All Products </NavLink>  
          <NavLink className="lg:text-[1rem] dark:hover:text-orange-500 dark:text-[wheat]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]" to="/contact">Contact </NavLink>  
          <NavLink className="lg:text-[1rem] dark:hover:text-orange-500 dark:text-[wheat]  xs:text-[0.6rem] md:text-[0.8rem] ssm:text-[0.6rem]" to="/about">About </NavLink>  
