@@ -9,18 +9,18 @@ import MessageShow from '../../Components/Shared/MessageShow'
 
 const HomePage = () => {
   return (
-   <div className='dark:bg-[#1D232A] dark:text-[white]'>
-    <Helmet>
-    <title>Binary Planet</title>
+    <div className='dark:bg-[#1D232A] dark:text-[white]'>
+      <Helmet>
+        <title>Binary Planet</title>
 
-    </Helmet>
-   <Carousel></Carousel>
-   <Category></Category>
-   <FeaturedProducts></FeaturedProducts>
-   <FAQsection></FAQsection>
-  <UserReviewSection></UserReviewSection> 
-  <MessageShow/>
-   
+      </Helmet>
+      <Carousel></Carousel>
+      <Category></Category>
+      <FeaturedProducts></FeaturedProducts>
+      <FAQsection></FAQsection>
+      <UserReviewSection></UserReviewSection>
+      <MessageShow />
+
     </div>
   )
 }

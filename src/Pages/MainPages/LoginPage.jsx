@@ -5,40 +5,27 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { Helmet } from 'react-helmet-async';
 
 const LoginPage = () => {
-  const [error,setError]=useState(null);
+  const [error, setError] = useState(null);
   const { signInWithGoogle, signIn, signInWithFacebook, signInWithGithub, setUser } = useContext(AuthContext)
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm({
-    defaultValues: {  email: '',password:'' }
-});
-  const handleNormalSignIn =async (form_data ) => {
-    //e.preventDefault();  
-    //alert(23);
-    //const form = new FormData(e.currentTarget);
+    defaultValues: { email: '', password: '' }
+  });
+  const handleNormalSignIn = async (form_data) => {
 
     const email = form_data.email;
     const password = form_data.password;
-     
+
     try {
-      const userCurr=await signIn(email, password); // Try to log in
-     // console.log('first ccccc',userCurr.user.uid);
-     //localStorage.setItem("uid", userCurr.user.uid);
-
-
+      const userCurr = await signIn(email, password); // Try to log in
+      
       navigate("/dashboard"); // If successful, navigate to dashboard
     } catch (err) {
       setError(err.message); // Set error message if login fails
-      console.error(err.message);
+      //console.error(err.message);
     }
 
-    // //console.log(email,password)
-    // signIn(email, password)
-    //   .then((res) => {
-    //     //console.log(res)
-    //     navigate('/dashboard');
-    //   })
-    //   .catch((err) => { setError(err.message) })
-
+   
 
   }
 
@@ -83,12 +70,12 @@ const LoginPage = () => {
   }
 
   return (
-    
+
     <div>
       <Helmet>
-    <title>Login Page</title>
+        <title>Login Page</title>
 
-    </Helmet>
+      </Helmet>
       <div className="hero bg-base-200 mt-6 ">
         <div className="hero-content flex-col lg:flex-row-reverse">
 
@@ -100,35 +87,35 @@ const LoginPage = () => {
                   <span className="label-text font-semibold">Email</span>
                 </label>
                 <input type="email" {...register("email", {
-                                    required: "Email is Required"
-                                })} placeholder="email" className="input input-bordered input-info w-full max-w-xs"   />
-                <br/> {errors.email && <p className='text-red-500 text-xs'>{errors.email.message}</p>}
+                  required: "Email is Required"
+                })} placeholder="email" className="input input-bordered input-info w-full max-w-xs" />
+                <br /> {errors.email && <p className='text-red-500 text-xs'>{errors.email.message}</p>}
               </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text font-semibold">Password</span>
                 </label>
-                <input type="password"   placeholder="password" className="input input-bordered 
+                <input type="password" placeholder="password" className="input input-bordered 
                 input-info w-full max-w-xs" {...register("password", {
                   required: "Password is Required"
-              })} />
+                })} />
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover font-semibold">Forgot password?</a>
                 </label>
-                <br/> {errors.password && <p className='text-red-500 text-xs'>{errors.password.message}</p>}
+                <br /> {errors.password && <p className='text-red-500 text-xs'>{errors.password.message}</p>}
                 <br />
                 <span className='text-[red] text-xs'>
-                {
-                  error? error : ""
-                }
+                  {
+                    error ? error : ""
+                  }
 
                 </span>
-               
+
               </div>
               <div className="form-control ">
 
                 <input type="submit" value="Login" className="text-[whitesmoke] bg-[darkcyan] font-bold w-32 md:ml-24 btn btn-primary" /> <br />
-                
+
 
               </div>
             </form>

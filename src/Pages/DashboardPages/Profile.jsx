@@ -7,21 +7,21 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 const Profile = () => {
-  const navigate=useNavigate();
-  const { user,setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { user, setUser } = useContext(AuthContext);
   //console.log(user,"my new user")
-  const [users,setUsers]=useState([]);
-  
-  
+  const [users, setUsers] = useState([]);
+
+
   return (
     <div className="p-6 dark:bg-[#1D232A] dark:text-[white] bg-white mt-4 sm:w-[26rem] sm:ml-12 lg:w-[37rem] xl:w-[50rem]
     md:w-[27rem] xs:w-[18rem] ssm:w-[21rem] rounded-lg shadow-lg relative">
 
-<Helmet>
-    <title>Profile Page</title>
+      <Helmet>
+        <title>Profile Page</title>
 
-    </Helmet>
-    <div className="flex flex-col items-center ">
+      </Helmet>
+      <div className="flex flex-col items-center ">
         <img
           src={user?.photoURL}
           alt="Profile"
@@ -65,13 +65,13 @@ const Profile = () => {
       </div>
 
 
-       {/* Edit Button with React Icon */}
-       {!user?.isBlocked ? (
+      {/* Edit Button with React Icon */}
+      {!user?.isBlocked ? (
         <button
           className="absolute top-4 right-4 text-gray-500 dark:text-[wheat] hover:text-blue-600 transition-transform transform hover:scale-105"
-          // onClick={handleOpenEditModal}
-        > <Link to={`/dashboard/user_edit/${user?.uid}`} > <FiEdit size={24} /></Link> 
-         
+        // onClick={handleOpenEditModal}
+        > <Link to={`/dashboard/user_edit/${user?.uid}`} > <FiEdit size={24} /></Link>
+
         </button>
       ) : null}
 
@@ -79,7 +79,7 @@ const Profile = () => {
 
 
 
-      </div>
+    </div>
   )
 }
 
